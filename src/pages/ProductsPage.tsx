@@ -1,19 +1,32 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { DropCapAccordionList, DropCapOption } from '../components/DropCapAccordion';
 import { COMPANY_INFO, SAFARI_STANDARD_INCLUSIONS } from '../data/travelData';
-import { heroSafari, destDiani, destDubai, sceneResort } from '../assets/images';
-import { Palmtree, ArrowLeft, Headphones, Sparkles, MessageSquare } from 'lucide-react';
+import { heroSafari, destDiani, destDubai, sceneResort, sceneMountain } from '../assets/images';
+import { 
+  Palmtree, 
+  ArrowLeft, 
+  Headphones, 
+  Sparkles, 
+  MessageSquare,
+  Globe2,
+  Compass,
+  FileText
+} from 'lucide-react';
 
 interface ProductsPageProps {
   onOpenBooking: (title?: string) => void;
 }
 
 export function ProductsPage({ onOpenBooking }: ProductsPageProps) {
-  const productOptions: DropCapOption[] = [
+  const [selectedCategory, setSelectedCategory] = useState<'all' | 'safari' | 'coastal' | 'international' | 'family' | 'digital'>('all');
+
+  const allProductOptions: (DropCapOption & { category: 'safari' | 'coastal' | 'international' | 'family' | 'digital' })[] = [
     {
       id: 'east-africa-big-five-safaris',
+      category: 'safari',
       dropCap: 'E',
-      badge: 'Bestseller Package',
+      badge: 'Bestseller Safari Package',
       title: 'East Africa Big Five Wildlife Safari Packages',
       subtitle: 'Maasai Mara, Amboseli, Samburu, Lake Nakuru & Tsavo Circuits',
       description: 'Our signature wildlife safari packages immerse you into the quintessential African wilderness. Witness the dramatic predator-prey dynamics of the Maasai Mara, gaze at Mount Kilimanjaros snow peaks towering above hundreds of elephants in Amboseli, and encounter rare northern species like grevys zebras and reticulated giraffes in Samburu.',
@@ -35,8 +48,9 @@ export function ProductsPage({ onOpenBooking }: ProductsPageProps) {
     },
     {
       id: 'diani-watamu-coastal-packages',
+      category: 'coastal',
       dropCap: 'D',
-      badge: 'Beach Getaways',
+      badge: 'Beach Holiday Package',
       title: 'Coastal Beachfront Resort & Island Holiday Packages',
       subtitle: 'Diani Beach, Watamu Marine Reserve, Chale Island & Malindi',
       description: 'Relax on award-winning powder-white sands bordered by warm Indian Ocean turquoise waters. Our coastal packages include vetted 4-star and 5-star beachfront resorts, return flight or SGR Madaraka Express train ticketing, seamless private station/airport transfers, and complimentary coral reef marine excursions.',
@@ -62,9 +76,39 @@ export function ProductsPage({ onOpenBooking }: ProductsPageProps) {
       ],
     },
     {
+      id: 'august-school-break-specials',
+      category: 'family',
+      dropCap: 'A',
+      badge: 'Family & School Break Special',
+      title: 'August Holiday & Seasonal School Break Family Specials',
+      subtitle: 'Family-Friendly Safaris, Kids Clubs, Beach Breaks & Train Packages',
+      description: 'Specially engineered for families, teachers, and school-break travelers. These packages feature interconnecting family suites, child-friendly swimming facilities, junior safari tracker educational bush walks, and convenient SGR train connections between Nairobi and the Mombasa coast for stress-free family travel.',
+      pricingOrTerms: 'Family Package Rates (2 Adults + Children Sharing Discounts)',
+      durationOrTimeline: '4 Days / 3 Nights & 5 Days / 4 Nights',
+      image: sceneResort,
+      features: [
+        'Accommodations specifically vetted for family safety and kid-friendly amenities',
+        'Interconnecting family rooms or 2-bedroom serviced beach apartments',
+        'Return SGR train tickets and private station transfers included',
+        'Flexible cancellation and date-change terms for peace of mind',
+      ],
+      subOptions: [
+        { title: 'August Diani Beach Family Escape', desc: 'Resort stay with swimming pools, water slides, and shallow lagoon waters.' },
+        { title: 'Great Wildebeest Migration Family Safari', desc: 'See millions of wildebeest crossing the Mara River during the peak August season.' },
+        { title: 'Lake Naivasha & Crescent Island Break', desc: 'Family boat safari walking safely among giraffes and zebras on Crescent Island.' },
+      ],
+      inclusions: [
+        'Resort/Lodge accommodation with full meal plans suitable for children',
+        'SGR Madaraka Express train tickets (First or Economy class) or domestic flights',
+        'All station transfers in private family-sized vans',
+        'Complimentary resort entertainment and kids club activities',
+      ],
+    },
+    {
       id: 'dubai-international-tours',
+      category: 'international',
       dropCap: 'U',
-      badge: 'Global City Break',
+      badge: 'International Tour Package',
       title: 'Dubai Futuristic City & Desert Safari Tour Packages',
       subtitle: 'Burj Khalifa, Desert Safari, Marina Dinner Cruise & Gold Souks',
       description: 'Step into the glittering metropolis of the Middle East. Our complete Dubai packages take care of every detail: 4-star city or beach hotel accommodation, Dubai tourist visa processing assistance, airport transfers, Burj Khalifa At the Top observation deck tickets, thrilling 4x4 red dune desert safaris, and romantic luxury Marina dhow cruises.',
@@ -91,37 +135,10 @@ export function ProductsPage({ onOpenBooking }: ProductsPageProps) {
       ],
     },
     {
-      id: 'august-school-break-specials',
-      dropCap: 'A',
-      badge: 'Family Favorite',
-      title: 'August Holiday & Seasonal School Break Family Specials',
-      subtitle: 'Family-Friendly Safaris, Kids Clubs, Beach Breaks & Train Packages',
-      description: 'Specially engineered for families, teachers, and school-break travelers. These packages feature interconnecting family suites, child-friendly swimming facilities, junior safari tracker educational bush walks, and convenient SGR train connections between Nairobi and the Mombasa coast for stress-free family travel.',
-      pricingOrTerms: 'Family Package Rates (2 Adults + Children Sharing Discounts)',
-      durationOrTimeline: '4 Days / 3 Nights & 5 Days / 4 Nights',
-      image: sceneResort,
-      features: [
-        'Accommodations specifically vetted for family safety and kid-friendly amenities',
-        'Interconnecting family rooms or 2-bedroom serviced beach apartments',
-        'Return SGR train tickets and private station transfers included',
-        'Flexible cancellation and date-change terms for peace of mind',
-      ],
-      subOptions: [
-        { title: 'August Diani Beach Family Escape', desc: 'Resort stay with swimming pools, water slides, and shallow lagoon waters.' },
-        { title: 'Great Wildebeest Migration Family Safari', desc: 'See millions of wildebeest crossing the Mara River during the peak August season.' },
-        { title: 'Lake Naivasha & Crescent Island Break', desc: 'Family boat safari walking safely among giraffes and zebras on Crescent Island.' },
-      ],
-      inclusions: [
-        'Resort/Lodge accommodation with full meal plans suitable for children',
-        'SGR Madaraka Express train tickets (First or Economy class) or domestic flights',
-        'All station transfers in private family-sized vans',
-        'Complimentary resort entertainment and kids club activities',
-      ],
-    },
-    {
       id: 'thailand-bangkok-phuket',
+      category: 'international',
       dropCap: 'P',
-      badge: 'Tropical Asia',
+      badge: 'Tropical Asia Package',
       title: 'Thailand Bangkok Temples & Phuket Tropical Island Escapes',
       subtitle: 'Grand Palace, Floating Markets, Phi Phi Islands & Beachfront Resorts',
       description: 'The golden jewel of Southeast Asia. Combine the electric energy, ornate golden temples, and street food markets of Bangkok with the serene tropical beaches and limestone karsts of Phuket and the Phi Phi Islands. A seamless vacation with inter-city flights and private transfers.',
@@ -147,13 +164,15 @@ export function ProductsPage({ onOpenBooking }: ProductsPageProps) {
     },
     {
       id: 'south-africa-cape-town-wine',
+      category: 'international',
       dropCap: 'S',
-      badge: 'Southern Africa',
+      badge: 'Southern Africa Package',
       title: 'South Africa Cape Town, Garden Route & Winelands Escapes',
       subtitle: 'Table Mountain Cable Car, Boulders Beach Penguins & Cape Point',
       description: 'Explore the Mother City of Africa. Ride the revolving aerial cable car to the summit of Table Mountain, visit the African penguin colony at Boulders Beach, drive the breathtaking Chapman’s Peak marine drive, and taste fine cuisine in the Franschhoek and Stellenbosch wine valleys.',
       pricingOrTerms: 'Custom International Itinerary · Direct Flights Available',
       durationOrTimeline: '6 Days / 5 Nights & 8 Days / 7 Nights',
+      image: sceneMountain,
       features: [
         'Luxury 4-star accommodation in Cape Town along the V&A Waterfront or Sea Point',
         'Table Mountain aerial cableway tickets with panoramic ocean views',
@@ -171,9 +190,36 @@ export function ProductsPage({ onOpenBooking }: ProductsPageProps) {
       ],
     },
     {
+      id: 'nairobi-day-excursion-package',
+      category: 'safari',
+      dropCap: 'N',
+      badge: 'Day Tour Package',
+      title: 'Nairobi City & Wildlife Sanctuary Day Tour Package',
+      subtitle: 'Nairobi National Park, Daphne Sheldrick Elephant Orphanage & Giraffe Centre',
+      description: 'Complete all-in-one day excursion package covering the wildlife highlights of Kenyas capital. Includes private transport, professional naturalist guide, guaranteed admission tickets, and optional traditional Kenyan luncheon.',
+      pricingOrTerms: 'KES 7,500 (Residents) / USD $135 (Non-Residents) All-Inclusive',
+      durationOrTimeline: 'Full Day (06:00 AM - 04:30 PM)',
+      features: [
+        'Early morning 4-hour safari drive in Nairobi National Park',
+        'Official Daphne Sheldrick elephant fostering session attendance',
+        'Hand-feeding endangered Rothschild giraffes at the Giraffe Centre',
+        'Door-to-door hotel and airport pickup in a private 4x4 safari cruiser',
+      ],
+      subOptions: [
+        { title: 'Standard Wildlife Trio Package', desc: 'Nairobi National Park + Sheldrick Orphanage + Giraffe Centre.' },
+        { title: 'Wildlife & Culture Package', desc: 'Adds Bomas of Kenya traditional tribal dances and craft village tour.' },
+      ],
+      inclusions: [
+        'Private 4x4 Land Cruiser with pop-up roof and dedicated chauffeur',
+        'All sanctuary admissions and conservation fees included',
+        'Complimentary bottled drinking water and cold beverages',
+      ],
+    },
+    {
       id: 'digital-brochures-field-guides',
+      category: 'digital',
       dropCap: 'B',
-      badge: 'Digital Guides',
+      badge: 'Digital Itinerary Product',
       title: 'Digital Travel Brochures & Destination Field Guides',
       subtitle: 'Downloadable PDF Itineraries, Migration Schedules & Packing Checklists',
       description: 'Access our official digital travel publications prepared for the 2026 travel season. These guides provide comprehensive day-by-day breakdowns, recommended camera lenses, yellow fever and malaria health guidelines, tipping etiquette, and seasonal weather patterns across Kenya and global circuits.',
@@ -196,33 +242,11 @@ export function ProductsPage({ onOpenBooking }: ProductsPageProps) {
         'Direct consultation hotline with the authors of each guide',
       ],
     },
-    {
-      id: 'corporate-travel-passes',
-      dropCap: 'M',
-      badge: 'Corporate Program',
-      title: 'Corporate Travel Retainers & Annual Business Account Passes',
-      subtitle: 'Consolidated Billing, Preferred Airfare Rates & Fast-Track Service',
-      description: 'Streamline your enterprise travel procurement with our corporate account program. We provide consolidated monthly billing, dedicated account managers, zero-stress employee booking portals, priority flight reservations, and vetted airport chauffeur services for organizations in Nairobi and across East Africa.',
-      pricingOrTerms: 'Custom Corporate Account Agreement · Net 30 Terms Available',
-      durationOrTimeline: 'Annual Corporate Retainer Program',
-      features: [
-        'Consolidated monthly tax invoicing compliant with Kenya Revenue Authority (KRA)',
-        'Designated senior corporate travel account manager reachable 24/7',
-        'Pre-negotiated corporate rates at major business hotels in Nairobi and Mombasa',
-        'Flexible ticket reissue and cancellation waivers on key airline partners',
-      ],
-      subOptions: [
-        { title: 'SME Business Travel Pass', desc: 'Tailored for growing companies with 5 to 50 frequent executive travelers.' },
-        { title: 'NGO & Diplomatic Mission Program', desc: 'Customized per-diem management, field transfers, and tax-exempt processing.' },
-        { title: 'Annual Corporate Offsite Retainer', desc: 'Guaranteed venue reservations and team-building coordination twice per year.' },
-      ],
-      inclusions: [
-        'Dedicated corporate service level agreement (SLA) with 15-minute response times',
-        'Detailed quarterly travel expenditure reporting and analytics',
-        'Emergency 24-hour traveler re-routing and crisis support desk',
-      ],
-    },
   ];
+
+  const displayedOptions = selectedCategory === 'all'
+    ? allProductOptions
+    : allProductOptions.filter((item) => item.category === selectedCategory);
 
   return (
     <main className="bg-slate-50 min-h-screen py-12 sm:py-16">
@@ -245,26 +269,95 @@ export function ProductsPage({ onOpenBooking }: ProductsPageProps) {
         </div>
 
         {/* Sub-Page Header - Clean & Minimal Interface */}
-        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-slate-200 text-emerald-700 text-xs font-bold uppercase tracking-wider mb-3 shadow-2xs">
+        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-slate-200 text-emerald-700 text-xs font-bold uppercase tracking-wider mb-3 shadow-2xs">
             <Sparkles className="w-3.5 h-3.5 text-emerald-600" />
-            <span>Curated Travel Packages & Products</span>
+            <span>Curated Travel Packages & Holiday Products</span>
           </div>
           
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight font-display">
-            Travel Products Directory
+            Travel Products & Packages
           </h1>
           
           <p className="mt-3 text-slate-600 text-sm sm:text-base leading-relaxed">
-            Organized in our clean, single-open <strong>Drop-Cap Accordion</strong>. Click any product package heading below to cleanly expand its day-by-day highlights, inclusions, and tailored quote options.
+            Organized in our clean, single-open <strong>Drop-Cap Accordion</strong>. All signature safari packages, coastal escapes, family breaks, and international holiday products are curated below. Click any heading to cleanly reveal day-by-day highlights, inclusions, and tailored quote options.
           </p>
+
+          {/* Clean Category Filter Tabs */}
+          <div className="mt-8 inline-flex flex-wrap items-center justify-center gap-1.5 p-1.5 rounded-2xl bg-white border border-slate-200 shadow-xs max-w-full">
+            <button
+              onClick={() => setSelectedCategory('all')}
+              className={`px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all ${
+                selectedCategory === 'all'
+                  ? 'bg-emerald-600 text-white shadow-xs'
+                  : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+              }`}
+            >
+              All Packages
+            </button>
+            <button
+              onClick={() => setSelectedCategory('safari')}
+              className={`px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center gap-1 ${
+                selectedCategory === 'safari'
+                  ? 'bg-emerald-600 text-white shadow-xs'
+                  : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+              }`}
+            >
+              <Compass className="w-3.5 h-3.5" />
+              <span>Wildlife Safaris</span>
+            </button>
+            <button
+              onClick={() => setSelectedCategory('coastal')}
+              className={`px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center gap-1 ${
+                selectedCategory === 'coastal'
+                  ? 'bg-emerald-600 text-white shadow-xs'
+                  : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+              }`}
+            >
+              <Palmtree className="w-3.5 h-3.5" />
+              <span>Coastal & Beach</span>
+            </button>
+            <button
+              onClick={() => setSelectedCategory('family')}
+              className={`px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center gap-1 ${
+                selectedCategory === 'family'
+                  ? 'bg-emerald-600 text-white shadow-xs'
+                  : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+              }`}
+            >
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>Family Specials</span>
+            </button>
+            <button
+              onClick={() => setSelectedCategory('international')}
+              className={`px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center gap-1 ${
+                selectedCategory === 'international'
+                  ? 'bg-emerald-600 text-white shadow-xs'
+                  : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+              }`}
+            >
+              <Globe2 className="w-3.5 h-3.5" />
+              <span>International Tours</span>
+            </button>
+            <button
+              onClick={() => setSelectedCategory('digital')}
+              className={`px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center gap-1 ${
+                selectedCategory === 'digital'
+                  ? 'bg-emerald-600 text-white shadow-xs'
+                  : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+              }`}
+            >
+              <FileText className="w-3.5 h-3.5" />
+              <span>Field Brochures</span>
+            </button>
+          </div>
         </div>
 
         {/* Drop-Cap Interactive Accordion Layout */}
         <DropCapAccordionList
-          items={productOptions}
+          items={displayedOptions}
           onOpenBooking={onOpenBooking}
-          categoryLabel="Pushworld Travel Products"
+          categoryLabel="Package"
         />
 
         {/* Minimal Bottom Help Desk Callout */}
@@ -287,7 +380,7 @@ export function ProductsPage({ onOpenBooking }: ProductsPageProps) {
               Request Custom Quote
             </button>
             <a
-              href={`${COMPANY_INFO.whatsappUrl}?text=${encodeURIComponent('Hi Pushworld Travel, I would like to inquire about customized holiday packages.')}`}
+              href={`${COMPANY_INFO.whatsappUrl}?text=${encodeURIComponent('Hi Push World Travel Ltd, I would like to inquire about customized holiday packages.')}`}
               target="_blank"
               rel="noopener noreferrer"
               className="px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition-colors flex items-center gap-1.5"

@@ -5,8 +5,8 @@ import { Footer } from './components/Footer';
 import { BookingModal } from './components/BookingModal';
 import { FloatingWhatsApp } from './components/FloatingWhatsApp';
 import { HomePage } from './pages/HomePage';
+import { AboutPage } from './pages/AboutPage';
 import { ServicesPage } from './pages/ServicesPage';
-import { ActivitiesPage } from './pages/ActivitiesPage';
 import { ProductsPage } from './pages/ProductsPage';
 import { ContactPage } from './pages/ContactPage';
 import { PackageItem } from './data/travelData';
@@ -61,17 +61,23 @@ export default function App() {
             {/* 1. Home Page: Landing Hub only, no detailed lists */}
             <Route path="/" element={<HomePage onOpenBooking={handleOpenBooking} />} />
 
-            {/* 2. Services Page: Dedicated standalone page with Drop-Cap Accordion */}
-            <Route path="/services" element={<ServicesPage onOpenBooking={handleOpenBooking} />} />
+            {/* 2. About Us Page: Dedicated standalone page with brand story & values */}
+            <Route path="/about" element={<AboutPage onOpenBooking={handleOpenBooking} />} />
 
-            {/* 3. Activities Page: Dedicated standalone page with Drop-Cap Accordion */}
-            <Route path="/activities" element={<ActivitiesPage onOpenBooking={handleOpenBooking} />} />
+            {/* 3. Services Page: Dedicated standalone page with Drop-Cap Accordion */}
+            <Route path="/services" element={<ServicesPage onOpenBooking={handleOpenBooking} />} />
 
             {/* 4. Products Page: Dedicated standalone page with Drop-Cap Accordion */}
             <Route path="/products" element={<ProductsPage onOpenBooking={handleOpenBooking} />} />
 
-            {/* 5. Contact Page: Dedicated standalone page with office contact and reviews */}
+            {/* Aliases redirecting to respective parent categories */}
+            <Route path="/packages" element={<Navigate to="/products" replace />} />
+            <Route path="/excursions" element={<Navigate to="/services?tab=excursions" replace />} />
+            <Route path="/activities" element={<Navigate to="/services?tab=excursions" replace />} />
+
+            {/* 5. Contacts Page: Dedicated standalone page with office contact and reviews */}
             <Route path="/contact" element={<ContactPage onOpenBooking={handleOpenBooking} />} />
+            <Route path="/contacts" element={<ContactPage onOpenBooking={handleOpenBooking} />} />
 
             {/* Fallback to Home */}
             <Route path="*" element={<Navigate to="/" replace />} />

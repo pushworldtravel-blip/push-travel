@@ -74,76 +74,76 @@ export function Footer({ onOpenBooking }: FooterProps) {
           {/* Col 3: Navigation Pages */}
           <div>
             <h4 className="text-sm font-bold text-white uppercase tracking-wider mb-4">
-              Explore Pages
+              Website Navigation
             </h4>
             <ul className="space-y-2.5 text-xs">
               <li>
-                <Link to="/" className="hover:text-amber-400 transition-colors">
-                  Home Landing Hub
+                <Link to="/" className="hover:text-amber-400 transition-colors font-medium">
+                  HOME
+                </Link>
+              </li>
+              <li>
+                <Link to="/about" className="hover:text-amber-400 transition-colors font-medium">
+                  ABOUT US
                 </Link>
               </li>
               <li>
                 <Link to="/services" className="hover:text-amber-400 transition-colors font-medium">
-                  Services (Drop-Cap Catalog)
-                </Link>
-              </li>
-              <li>
-                <Link to="/activities" className="hover:text-amber-400 transition-colors font-medium">
-                  Activities & Excursions
+                  SERVICES & EXCURSIONS
                 </Link>
               </li>
               <li>
                 <Link to="/products" className="hover:text-amber-400 transition-colors font-medium">
-                  Products & Tour Packages
+                  PRODUCTS & PACKAGES
                 </Link>
               </li>
               <li>
                 <Link to="/contact" className="hover:text-amber-400 transition-colors font-medium">
-                  Find Us in Nairobi or Call Office
+                  CONTACTS & REVIEWS
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Col 4: Top Service Categories */}
+          {/* Col 4: Inside Services & Products */}
           <div>
             <h4 className="text-sm font-bold text-white uppercase tracking-wider mb-4">
-              Category Portals
+              Featured Within Pages
             </h4>
             <ul className="space-y-2 text-xs">
               <li>
                 <Link to="/services" className="hover:text-amber-400 transition-colors">
-                  Luxury & Premium Travel
+                  Travel Management Services
                 </Link>
               </li>
               <li>
-                <Link to="/services" className="hover:text-amber-400 transition-colors">
-                  Custom Trip Planner
+                <Link to="/services?tab=excursions" className="hover:text-amber-400 transition-colors">
+                  Safari & Day Excursions
                 </Link>
               </li>
               <li>
-                <Link to="/services" className="hover:text-amber-400 transition-colors">
-                  Corporate Travel & Offsites
-                </Link>
-              </li>
-              <li>
-                <Link to="/activities" className="hover:text-amber-400 transition-colors">
-                  Big Five Wildlife Safaris
-                </Link>
-              </li>
-              <li>
-                <Link to="/activities" className="hover:text-amber-400 transition-colors">
+                <Link to="/services?tab=excursions" className="hover:text-amber-400 transition-colors">
                   Hot Air Balloon Flights
                 </Link>
               </li>
               <li>
                 <Link to="/products" className="hover:text-amber-400 transition-colors">
-                  August School Holiday Deals
+                  Big Five Safari Packages
+                </Link>
+              </li>
+              <li>
+                <Link to="/products" className="hover:text-amber-400 transition-colors">
+                  Coastal Diani Beach Breaks
                 </Link>
               </li>
               <li>
                 <Link to="/products" className="hover:text-amber-400 transition-colors">
                   Dubai & International Tours
+                </Link>
+              </li>
+              <li>
+                <Link to="/products" className="hover:text-amber-400 transition-colors">
+                  August Family Specials
                 </Link>
               </li>
             </ul>

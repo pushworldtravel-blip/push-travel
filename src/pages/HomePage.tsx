@@ -4,15 +4,14 @@ import { heroSafari, destDiani, sceneResort } from '../assets/images';
 import { 
   ArrowRight, 
   Sparkles, 
-  Compass, 
-  Palmtree, 
   Briefcase, 
+  Palmtree, 
+  Globe2,
   Phone, 
-  MessageSquare, 
-  ShieldCheck, 
+  CheckCircle2, 
   Clock, 
-  CheckCircle2,
-  MapPin
+  MapPin,
+  MessageSquare
 } from 'lucide-react';
 
 interface HomePageProps {
@@ -25,7 +24,7 @@ export function HomePage({ onOpenBooking }: HomePageProps) {
       
       {/* =========================================================================
           HERO LANDING HUB
-          (Completely clean, uncluttered, focused on high-level navigation)
+          (Pure landing hub, clean, professional, focused on main navigation)
          ========================================================================= */}
       <section className="relative min-h-[580px] sm:min-h-[640px] flex items-center justify-center bg-slate-950 overflow-hidden text-white">
         
@@ -60,29 +59,37 @@ export function HomePage({ onOpenBooking }: HomePageProps) {
           </p>
 
           {/* High-Level Navigation Action Hub */}
-          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3 w-full max-w-md sm:max-w-none">
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-3 w-full max-w-2xl">
             <Link
-              to="/services"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-amber-600 hover:bg-amber-500 text-white font-bold text-sm shadow-lg hover:shadow-amber-600/30 transition-all active:scale-95"
+              to="/about"
+              className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-white/15 hover:bg-white/25 text-white font-bold backdrop-blur-md border border-white/25 transition-all active:scale-95 text-xs sm:text-sm tracking-wider"
             >
-              <span>Explore Services</span>
-              <ArrowRight className="w-4 h-4" />
+              <span>ABOUT US</span>
+              <ArrowRight className="w-3.5 h-3.5" />
             </Link>
 
             <Link
-              to="/activities"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-white/15 hover:bg-white/25 text-white font-bold backdrop-blur-md border border-white/25 transition-all active:scale-95 text-sm"
+              to="/services"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-amber-600 hover:bg-amber-500 text-white font-bold text-xs sm:text-sm shadow-lg hover:shadow-amber-600/30 transition-all active:scale-95 tracking-wider"
             >
-              <span>Discover Activities</span>
-              <ArrowRight className="w-4 h-4" />
+              <span>SERVICES</span>
+              <ArrowRight className="w-3.5 h-3.5" />
             </Link>
 
             <Link
               to="/products"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold backdrop-blur-md border border-white/15 transition-all text-sm"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-white/15 hover:bg-white/25 text-white font-bold backdrop-blur-md border border-white/25 transition-all active:scale-95 text-xs sm:text-sm tracking-wider"
             >
-              <span>Browse Products</span>
-              <ArrowRight className="w-4 h-4" />
+              <span>PRODUCTS</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
+
+            <Link
+              to="/contact"
+              className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold backdrop-blur-md border border-white/15 transition-all text-xs sm:text-sm tracking-wider"
+            >
+              <span>CONTACTS</span>
+              <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>
 
@@ -121,76 +128,76 @@ export function HomePage({ onOpenBooking }: HomePageProps) {
             Select a Dedicated Category
           </h2>
           <p className="mt-3 text-slate-600 text-sm sm:text-base leading-relaxed">
-            Click any top-level category below or in the navigation bar to visit its dedicated page, featuring our interactive drop-cap accordion view.
+            Click any top-level category below or in the navigation bar to visit its dedicated page.
           </p>
         </div>
 
-        {/* 3 Top-Level Portal Cards */}
+        {/* 3 Main Top-Level Portal Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           
-          {/* 1. Services Portal */}
+          {/* 1. About Us Portal */}
           <div className="group bg-white rounded-2xl border border-slate-200/90 hover:border-amber-400 p-8 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
             <div>
               <div className="w-14 h-14 rounded-2xl bg-amber-500/10 border border-amber-500/20 text-amber-600 flex items-center justify-center mb-6 group-hover:scale-105 transition-transform">
-                <Briefcase className="w-7 h-7" />
+                <Globe2 className="w-7 h-7" />
               </div>
 
               <div className="text-[11px] font-bold text-amber-700 uppercase tracking-widest mb-1">
-                TOP-LEVEL HEADING 01
+                CATEGORY 01
               </div>
 
               <h3 className="text-2xl font-extrabold text-slate-900 font-display mb-3 group-hover:text-amber-700 transition-colors">
-                Services
+                ABOUT US
               </h3>
 
               <p className="text-sm text-slate-600 leading-relaxed mb-6">
-                Complete travel management solutions covering luxury travel, custom trip planning, corporate retreats, flights, hotels, and airport transfers.
+                Discover our heritage, travel philosophy, mission, vision, and client commitment to making journeys seamless and memorable.
               </p>
             </div>
 
             <div className="pt-5 border-t border-slate-100 flex items-center justify-between">
               <span className="text-xs font-semibold text-slate-500">
-                8 Dedicated Solutions
+                Company Story & Values
               </span>
               <Link
-                to="/services"
+                to="/about"
                 className="inline-flex items-center gap-1.5 text-xs font-bold text-amber-600 hover:text-amber-700 group-hover:translate-x-0.5 transition-transform"
               >
-                <span>Open Services Page</span>
+                <span>Open About Us</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
           </div>
 
-          {/* 2. Activities Portal */}
+          {/* 2. Services Portal */}
           <div className="group bg-white rounded-2xl border border-slate-200/90 hover:border-amber-400 p-8 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
             <div>
               <div className="w-14 h-14 rounded-2xl bg-blue-500/10 border border-blue-500/20 text-blue-600 flex items-center justify-center mb-6 group-hover:scale-105 transition-transform">
-                <Compass className="w-7 h-7" />
+                <Briefcase className="w-7 h-7" />
               </div>
 
               <div className="text-[11px] font-bold text-blue-700 uppercase tracking-widest mb-1">
-                TOP-LEVEL HEADING 02
+                CATEGORY 02
               </div>
 
               <h3 className="text-2xl font-extrabold text-slate-900 font-display mb-3 group-hover:text-blue-700 transition-colors">
-                Activities
+                SERVICES
               </h3>
 
               <p className="text-sm text-slate-600 leading-relaxed mb-6">
-                Curated experiential safari game drives, sunrise hot air balloon flights, coral reef snorkeling, mountain trekking, and cultural encounters.
+                Complete travel management solutions covering luxury travel, custom trip planning, flights, hotels, airport transfers, plus guided day excursions and wildlife activities.
               </p>
             </div>
 
             <div className="pt-5 border-t border-slate-100 flex items-center justify-between">
               <span className="text-xs font-semibold text-slate-500">
-                8 Curated Excursions
+                Services & Excursions
               </span>
               <Link
-                to="/activities"
+                to="/services"
                 className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-600 hover:text-blue-700 group-hover:translate-x-0.5 transition-transform"
               >
-                <span>Open Activities Page</span>
+                <span>Open Services</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
@@ -204,27 +211,27 @@ export function HomePage({ onOpenBooking }: HomePageProps) {
               </div>
 
               <div className="text-[11px] font-bold text-emerald-700 uppercase tracking-widest mb-1">
-                TOP-LEVEL HEADING 03
+                CATEGORY 03
               </div>
 
               <h3 className="text-2xl font-extrabold text-slate-900 font-display mb-3 group-hover:text-emerald-700 transition-colors">
-                Products
+                PRODUCTS
               </h3>
 
               <p className="text-sm text-slate-600 leading-relaxed mb-6">
-                Curated vacation packages, holiday getaways, August school break specials, international tours, and digital destination field brochures.
+                Curated wildlife safari packages, coastal beach holiday getaways, August school break family specials, international tours, and digital destination field brochures.
               </p>
             </div>
 
             <div className="pt-5 border-t border-slate-100 flex items-center justify-between">
               <span className="text-xs font-semibold text-slate-500">
-                8 Package Products
+                Holiday Packages & Tours
               </span>
               <Link
                 to="/products"
                 className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-600 hover:text-emerald-700 group-hover:translate-x-0.5 transition-transform"
               >
-                <span>Open Products Page</span>
+                <span>Open Products</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
@@ -256,7 +263,7 @@ export function HomePage({ onOpenBooking }: HomePageProps) {
               to="/contact"
               className="px-5 py-3 rounded-xl bg-amber-500 hover:bg-amber-400 active:scale-95 text-slate-950 font-bold text-xs shadow-md transition-all flex items-center gap-1.5"
             >
-              <span>View Office & Reviews</span>
+              <span>CONTACTS & REVIEWS</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
 

@@ -40,11 +40,11 @@ export function Navbar({ onOpenBooking }: NavbarProps) {
   }, [location.pathname]);
 
   const navLinks = [
-    { to: '/', label: 'Home' },
-    { to: '/services', label: 'Services', badge: '8 Options' },
-    { to: '/activities', label: 'Activities', badge: 'Excursions' },
-    { to: '/products', label: 'Products', badge: 'Packages' },
-    { to: '/contact', label: 'Contact' },
+    { to: '/', label: 'HOME' },
+    { to: '/about', label: 'ABOUT US' },
+    { to: '/services', label: 'SERVICES' },
+    { to: '/products', label: 'PRODUCTS' },
+    { to: '/contact', label: 'CONTACTS' },
   ];
 
   return (
@@ -111,26 +111,21 @@ export function Navbar({ onOpenBooking }: NavbarProps) {
             <Logo variant="full" />
           </Link>
 
-          {/* Top-Level Navigation Menu (Routing to Dedicated Standalone Pages) */}
-          <div className="hidden lg:flex items-center gap-1 xl:gap-2 text-sm font-semibold text-slate-700">
+          {/* Top-Level Navigation Menu (HOME · ABOUT US · SERVICES · PRODUCTS · CONTACTS) */}
+          <div className="hidden lg:flex items-center gap-1 xl:gap-2 text-xs sm:text-sm font-bold tracking-wider text-slate-700">
             {navLinks.map((link) => (
               <NavLink
                 key={link.to}
                 to={link.to}
                 className={({ isActive }) =>
-                  `px-3.5 py-2 rounded-xl transition-all duration-150 flex items-center gap-1.5 ${
+                  `px-3.5 py-2 rounded-xl transition-all duration-150 ${
                     isActive
-                      ? 'bg-amber-50 text-amber-800 font-bold border border-amber-200/80 shadow-2xs'
+                      ? 'bg-amber-50 text-amber-800 border border-amber-200/80 shadow-2xs font-extrabold'
                       : 'hover:text-amber-600 hover:bg-slate-50'
                   }`
                 }
               >
-                <span>{link.label}</span>
-                {link.badge && (
-                  <span className="text-[10px] uppercase font-bold px-1.5 py-0.5 rounded-full bg-slate-100 text-slate-600 group-hover:bg-amber-100">
-                    {link.badge}
-                  </span>
-                )}
+                {link.label}
               </NavLink>
             ))}
           </div>
@@ -174,25 +169,20 @@ export function Navbar({ onOpenBooking }: NavbarProps) {
             Navigation Menu
           </div>
 
-          <div className="flex flex-col space-y-1.5 text-base font-semibold text-slate-800">
+          <div className="flex flex-col space-y-1.5 text-base font-bold tracking-wider text-slate-800">
             {navLinks.map((link) => (
               <NavLink
                 key={link.to}
                 to={link.to}
                 className={({ isActive }) =>
-                  `w-full text-left py-2.5 px-3.5 rounded-xl transition-colors flex items-center justify-between ${
+                  `w-full text-left py-2.5 px-3.5 rounded-xl transition-colors ${
                     isActive
-                      ? 'bg-amber-50 text-amber-800 font-bold border border-amber-200'
-                      : 'hover:bg-slate-50 hover:text-amber-700'
+                      ? 'bg-amber-50 text-amber-800 border border-amber-200'
+                      : 'hover:bg-slate-50 text-slate-800 hover:text-amber-700'
                   }`
                 }
               >
-                <span>{link.label}</span>
-                {link.badge && (
-                  <span className="text-[11px] font-medium px-2 py-0.5 rounded-full bg-slate-100 text-slate-600">
-                    {link.badge}
-                  </span>
-                )}
+                {link.label}
               </NavLink>
             ))}
           </div>

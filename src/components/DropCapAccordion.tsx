@@ -71,7 +71,7 @@ export function DropCapAccordionList({ items, onOpenBooking, categoryLabel }: Dr
               <div className="flex-1 min-w-0 pr-2">
                 <div className="flex flex-wrap items-center gap-2 mb-1">
                   <span className="text-[10px] font-bold tracking-widest text-slate-400 uppercase">
-                    OPTION {indexNumber}
+                    {categoryLabel ? `${categoryLabel.toUpperCase()} · ${indexNumber}` : `ITEM ${indexNumber}`}
                   </span>
                   {item.badge && (
                     <span className="inline-flex items-center gap-1 text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full bg-amber-50 text-amber-800 border border-amber-200">

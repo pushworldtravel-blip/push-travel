@@ -199,12 +199,12 @@ export function Footer({ onOpenBooking }: FooterProps) {
         {/* Bottom Bar: Copyright & Verified Info */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4 text-center sm:text-left">
           <div>
-            © {new Date().getFullYear()} Push World Travel Ltd. All rights reserved. Registered Travel & Concierge Agency in Nairobi, Kenya.
+            © {new Date().getFullYear()} Push World Travel Ltd. All rights reserved. Registered Travel Agency in Nairobi, Kenya.
           </div>
           <div className="flex items-center gap-4 text-xs text-slate-400">
             <span>Direct Phone: <strong className="text-slate-200">{COMPANY_INFO.phone}</strong></span>
             <span>·</span>
-            <span>24/7 Concierge Support</span>
+            <span>24/7 Travel Support</span>
           </div>
         </div>
 

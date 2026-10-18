@@ -259,12 +259,12 @@ export function ProductsPage({ onOpenBooking }: ProductsPageProps) {
             className="inline-flex items-center gap-2 text-xs font-bold text-slate-500 hover:text-amber-600 transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
-            <span>Back to Home Landing Hub</span>
+            <span>Back to Home</span>
           </Link>
 
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-100 text-emerald-900 text-xs font-semibold">
             <Palmtree className="w-3.5 h-3.5 text-emerald-600" />
-            <span>Top-Level Category: Products</span>
+            <span>Products</span>
           </div>
         </div>
 
@@ -272,15 +272,15 @@ export function ProductsPage({ onOpenBooking }: ProductsPageProps) {
         <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-slate-200 text-emerald-700 text-xs font-bold uppercase tracking-wider mb-3 shadow-2xs">
             <Sparkles className="w-3.5 h-3.5 text-emerald-600" />
-            <span>Curated Travel Packages & Holiday Products</span>
+            <span>Travel Packages & Holiday Products</span>
           </div>
           
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight font-display">
-            Travel Products & Packages
+            Products
           </h1>
           
           <p className="mt-3 text-slate-600 text-sm sm:text-base leading-relaxed">
-            Organized in our clean, single-open <strong>Drop-Cap Accordion</strong>. All signature safari packages, coastal escapes, family breaks, and international holiday products are curated below. Click any heading to cleanly reveal day-by-day highlights, inclusions, and tailored quote options.
+            Explore our signature safari packages, coastal escapes, and international tours below. Click any package to view details and request a tailored quote.
           </p>
 
           {/* Clean Category Filter Tabs */}

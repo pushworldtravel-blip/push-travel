@@ -510,12 +510,12 @@ export function ServicesPage({ onOpenBooking }: ServicesPageProps) {
             className="inline-flex items-center gap-2 text-xs font-bold text-slate-500 hover:text-amber-600 transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
-            <span>Back to Home Landing Hub</span>
+            <span>Back to Home</span>
           </Link>
 
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-100 text-amber-900 text-xs font-semibold">
             <Briefcase className="w-3.5 h-3.5 text-amber-600" />
-            <span>Top-Level Category: Services</span>
+            <span>Services</span>
           </div>
         </div>
 
@@ -523,15 +523,15 @@ export function ServicesPage({ onOpenBooking }: ServicesPageProps) {
         <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-slate-200 text-amber-700 text-xs font-bold uppercase tracking-wider mb-3 shadow-2xs">
             <Sparkles className="w-3.5 h-3.5 text-amber-600" />
-            <span>Comprehensive Travel Services & Excursions</span>
+            <span>Travel Services & Excursions</span>
           </div>
           
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight font-display">
-            Services & Excursions Directory
+            Services
           </h1>
           
           <p className="mt-3 text-slate-600 text-sm sm:text-base leading-relaxed">
-            Organized in our clean, single-open <strong>Drop-Cap Accordion</strong> layout. Both professional travel management services and guided safari excursions are placed cleanly inside this category. Click any heading below to reveal full specifications, inclusions, and tailored quotations.
+            Explore our travel management services and guided safari excursions below. Click any service to view details and request a tailored quote.
           </p>
 
           {/* Clean Sub-Category Switcher Tabs */}

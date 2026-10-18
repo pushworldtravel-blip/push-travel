@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ChevronDown, MessageSquare, ArrowRight, CheckCircle2, Sparkles, Tag, Clock } from 'lucide-react';
+import { ChevronDown, MessageSquare, ArrowRight, CheckCircle2, Tag, Clock } from 'lucide-react';
 import { COMPANY_INFO } from '../data/travelData';
 
 export interface DropCapOption {
@@ -69,23 +69,14 @@ export function DropCapAccordionList({ items, onOpenBooking, categoryLabel }: Dr
 
               {/* Title & Metadata Block */}
               <div className="flex-1 min-w-0 pr-2">
-                <div className="flex flex-wrap items-center gap-2 mb-1">
-                  <span className="text-[10px] font-bold tracking-widest text-slate-400 uppercase">
-                    {categoryLabel ? `${categoryLabel.toUpperCase()} · ${indexNumber}` : `ITEM ${indexNumber}`}
-                  </span>
-                  {item.badge && (
-                    <span className="inline-flex items-center gap-1 text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full bg-amber-50 text-amber-800 border border-amber-200">
-                      <Sparkles className="w-2.5 h-2.5 text-amber-600" />
-                      {item.badge}
-                    </span>
-                  )}
-                  {item.durationOrTimeline && (
-                    <span className="hidden sm:inline-flex items-center gap-1 text-[11px] text-slate-500">
+                {item.durationOrTimeline && (
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="inline-flex items-center gap-1 text-[11px] text-slate-500">
                       <Clock className="w-3 h-3 text-slate-400" />
                       {item.durationOrTimeline}
                     </span>
-                  )}
-                </div>
+                  </div>
+                )}
 
                 <h3 className="text-base sm:text-lg lg:text-xl font-bold text-slate-900 leading-snug">
                   {item.title}
@@ -121,6 +112,8 @@ export function DropCapAccordionList({ items, onOpenBooking, categoryLabel }: Dr
                     <img
                       src={item.image}
                       alt={item.title}
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-cover"
                       referrerPolicy="no-referrer"
                     />

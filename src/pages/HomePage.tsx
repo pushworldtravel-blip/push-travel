@@ -1,60 +1,192 @@
+import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { COMPANY_INFO } from '../data/travelData';
-import { heroSafari, destDiani, sceneResort } from '../assets/images';
+import { 
+  heroSafari, 
+  destDiani, 
+  destDubai, 
+  sceneResort, 
+  sceneMountain 
+} from '../assets/images';
 import { 
   ArrowRight, 
-  Sparkles, 
   Briefcase, 
   Palmtree, 
   Globe2,
   Phone, 
   CheckCircle2, 
   Clock, 
-  MapPin,
-  MessageSquare
+  MapPin
 } from 'lucide-react';
 
 interface HomePageProps {
   onOpenBooking: (title?: string) => void;
 }
 
+interface CinematicScene {
+  id: string;
+  name: string;
+  tagline: string;
+  categoryTag: string;
+  location: string;
+  icon: string;
+  fallbackImg: string;
+  videoUrl?: string;
+  fallbackVideoUrl?: string;
+}
+
+const CINEMATIC_SCENES: CinematicScene[] = [
+  {
+    id: 'safari',
+    name: 'Maasai Mara Big Five Expedition',
+    tagline: 'Witness majestic wildlife on the untamed African savannah',
+    categoryTag: 'African Safari & Wildlife',
+    location: 'Maasai Mara & Nairobi National Park, Kenya',
+    icon: '🦁',
+    fallbackImg: heroSafari,
+    videoUrl: 'https://upload.wikimedia.org/wikipedia/commons/transcoded/2/24/Safari_at_Nairobi_National_Park%2C_Aug_2025.webm/Safari_at_Nairobi_National_Park%2C_Aug_2025.webm.720p.vp9.webm',
+    fallbackVideoUrl: 'https://upload.wikimedia.org/wikipedia/commons/2/24/Safari_at_Nairobi_National_Park%2C_Aug_2025.webm',
+  },
+  {
+    id: 'beach',
+    name: 'Diani & Watamu Coral Escapes',
+    tagline: 'Pristine turquoise waters and powder-white Indian Ocean sands',
+    categoryTag: 'Tropical Beaches & Ocean Resorts',
+    location: 'Diani Beach & Watamu, Kenya Coast',
+    icon: '🏖️',
+    fallbackImg: destDiani,
+    videoUrl: 'https://upload.wikimedia.org/wikipedia/commons/2/2a/A_beach_in_Diani-Morning.webm',
+  },
+  {
+    id: 'city',
+    name: 'Dubai & World Cosmopolitan Cities',
+    tagline: 'Futuristic architectural wonders, desert dunes & luxury marinas',
+    categoryTag: 'International Skylines & Desert Oasis',
+    location: 'Downtown Dubai & Arabian Desert, UAE',
+    icon: '🏙️',
+    fallbackImg: destDubai,
+  },
+  {
+    id: 'mountain',
+    name: 'Mount Kenya & Aberdare Highlands',
+    tagline: 'Misty bamboo forests, plunging waterfalls & alpine peaks',
+    categoryTag: 'Scenic Mountain Landscapes',
+    location: 'Mount Kenya & Aberdares, Kenya',
+    icon: '⛰️',
+    fallbackImg: sceneMountain,
+  },
+  {
+    id: 'resort',
+    name: '5-Star Luxury Oceanfront Resorts',
+    tagline: 'Private beachfront villas, butler service & tropical sanctuaries',
+    categoryTag: 'Hotels, Villas & Island Retreats',
+    location: 'Zanzibar & Coastal Sanctuaries',
+    icon: '🏝️',
+    fallbackImg: sceneResort,
+  },
+];
+
 export function HomePage({ onOpenBooking }: HomePageProps) {
+  const [currentSceneIndex, setCurrentSceneIndex] = useState(0);
+  const [videoError, setVideoError] = useState(false);
+  const [videoReady, setVideoReady] = useState(false);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+
+  // Defer video initialization until after critical paint to avoid page freezing
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setVideoReady(true);
+    }, 150);
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Auto-advance scenes smoothly every 8 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSceneIndex((prev) => (prev + 1) % CINEMATIC_SCENES.length);
+    }, 8000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  // Reset video error on scene transition
+  useEffect(() => {
+    setVideoError(false);
+  }, [currentSceneIndex]);
+
   return (
     <main className="bg-slate-50 min-h-screen">
       
       {/* =========================================================================
-          HERO LANDING HUB
+          HERO LANDING HUB WITH OPTIMIZED CINEMATIC VIDEO BACKGROUND
           (Pure landing hub, clean, professional, focused on main navigation)
          ========================================================================= */}
-      <section className="relative min-h-[580px] sm:min-h-[640px] flex items-center justify-center bg-slate-950 overflow-hidden text-white">
+      <section className="relative min-h-[640px] sm:min-h-[720px] lg:min-h-[780px] flex items-center justify-center bg-slate-950 overflow-hidden text-white">
         
-        {/* Background Visual Atmosphere */}
-        <div className="absolute inset-0 z-0 select-none pointer-events-none">
-          <img
-            src={heroSafari}
-            alt="Pushworld Travel Experiences"
-            className="w-full h-full object-cover object-center scale-105 transition-transform duration-10000"
-            referrerPolicy="no-referrer"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-slate-900/60" />
-          <div className="absolute inset-0 bg-radial-at-c from-transparent via-slate-950/40 to-slate-950/80" />
+        {/* Lightweight Multi-Destination Video Background */}
+        <div className="absolute inset-0 z-0 select-none pointer-events-none overflow-hidden">
+          {CINEMATIC_SCENES.map((scene, idx) => {
+            const isActive = idx === currentSceneIndex;
+            // Only keep active or next scene in DOM to save memory and avoid GPU thrashing
+            const isVisible = isActive || idx === (currentSceneIndex + 1) % CINEMATIC_SCENES.length;
+            if (!isVisible) return null;
+
+            return (
+              <div
+                key={scene.id}
+                className={`absolute inset-0 transition-opacity duration-1000 ease-in-out will-change-[opacity] ${
+                  isActive ? 'opacity-100 z-10' : 'opacity-0 z-0'
+                }`}
+              >
+                {/* Active Scene Video with Image Fallback */}
+                {isActive && scene.videoUrl && videoReady && !videoError ? (
+                  <video
+                    ref={videoRef}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    preload="metadata"
+                    disablePictureInPicture
+                    onError={() => setVideoError(true)}
+                    className="w-full h-full object-cover object-center transform scale-105 transition-transform duration-10000 ease-out"
+                  >
+                    <source src={scene.videoUrl} type="video/webm" />
+                    {scene.fallbackVideoUrl && (
+                      <source src={scene.fallbackVideoUrl} type="video/webm" />
+                    )}
+                  </video>
+                ) : (
+                  /* High-Resolution Cinematic Still with Subtle Ken Burns Effect */
+                  <img
+                    src={scene.fallbackImg}
+                    alt={scene.name}
+                    decoding="async"
+                    loading={idx === 0 ? 'eager' : 'lazy'}
+                    className={`w-full h-full object-cover object-center transform transition-transform duration-8000 ease-out ${
+                      isActive ? 'scale-105' : 'scale-100'
+                    }`}
+                    referrerPolicy="no-referrer"
+                  />
+                )}
+              </div>
+            );
+          })}
+
+          {/* Deep Cinematic Contrast Scrims for Flawless Text Legibility */}
+          <div className="absolute inset-0 z-20 bg-gradient-to-t from-slate-950 via-slate-950/65 to-slate-950/50" />
+          <div className="absolute inset-0 z-20 bg-radial-at-c from-transparent via-slate-950/35 to-slate-950/80" />
         </div>
 
         {/* Foreground Content - Pure Landing Hub */}
-        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center flex flex-col items-center">
+        <div className="relative z-30 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center flex flex-col items-center">
           
-          {/* Official Badge */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/20 backdrop-blur-md border border-amber-400/40 text-xs text-amber-300 font-bold mb-6 shadow-sm">
-            <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-            <span>Nairobi Concierge & Travel Desk · Push World Travel Ltd</span>
-          </div>
-
           {/* Primary Typography */}
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight font-display text-white leading-tight">
             Travel Beyond Ordinary
           </h1>
 
-          <p className="mt-4 text-base sm:text-lg text-slate-300 max-w-2xl leading-relaxed">
+          <p className="mt-4 text-base sm:text-lg text-slate-200 max-w-2xl leading-relaxed drop-shadow-sm">
             Personalised local and international travel planning, wildlife safaris, coastal escapes, flights, luxury accommodations, and airport transfers.
           </p>
 
@@ -62,7 +194,7 @@ export function HomePage({ onOpenBooking }: HomePageProps) {
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3 w-full max-w-2xl">
             <Link
               to="/about"
-              className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-white/15 hover:bg-white/25 text-white font-bold backdrop-blur-md border border-white/25 transition-all active:scale-95 text-xs sm:text-sm tracking-wider"
+              className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-white/15 hover:bg-white/25 text-white font-bold backdrop-blur-md border border-white/25 transition-all active:scale-95 text-xs sm:text-sm tracking-wider shadow-sm"
             >
               <span>ABOUT US</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -78,7 +210,7 @@ export function HomePage({ onOpenBooking }: HomePageProps) {
 
             <Link
               to="/products"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-white/15 hover:bg-white/25 text-white font-bold backdrop-blur-md border border-white/25 transition-all active:scale-95 text-xs sm:text-sm tracking-wider"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-white/15 hover:bg-white/25 text-white font-bold backdrop-blur-md border border-white/25 transition-all active:scale-95 text-xs sm:text-sm tracking-wider shadow-sm"
             >
               <span>PRODUCTS</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -94,7 +226,7 @@ export function HomePage({ onOpenBooking }: HomePageProps) {
           </div>
 
           {/* Trust Strip */}
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-4 text-xs text-slate-300">
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-4 text-xs text-slate-300">
             <span className="flex items-center gap-1.5">
               <CheckCircle2 className="w-4 h-4 text-emerald-400" />
               Direct Office Assistance
@@ -118,7 +250,10 @@ export function HomePage({ onOpenBooking }: HomePageProps) {
           TOP-LEVEL CATEGORY PORTALS
           (Strictly high-level navigation cards — NO sub-options, detailed lists, or grids)
          ========================================================================= */}
-      <section className="py-16 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section 
+        className="py-16 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+        style={{ contentVisibility: 'auto', containIntrinsicSize: '600px' }}
+      >
         
         <div className="text-center max-w-2xl mx-auto mb-12">
           <div className="text-xs font-bold tracking-wider uppercase text-amber-600 mb-2">
@@ -140,10 +275,6 @@ export function HomePage({ onOpenBooking }: HomePageProps) {
             <div>
               <div className="w-14 h-14 rounded-2xl bg-amber-500/10 border border-amber-500/20 text-amber-600 flex items-center justify-center mb-6 group-hover:scale-105 transition-transform">
                 <Globe2 className="w-7 h-7" />
-              </div>
-
-              <div className="text-[11px] font-bold text-amber-700 uppercase tracking-widest mb-1">
-                CATEGORY 01
               </div>
 
               <h3 className="text-2xl font-extrabold text-slate-900 font-display mb-3 group-hover:text-amber-700 transition-colors">
@@ -176,10 +307,6 @@ export function HomePage({ onOpenBooking }: HomePageProps) {
                 <Briefcase className="w-7 h-7" />
               </div>
 
-              <div className="text-[11px] font-bold text-blue-700 uppercase tracking-widest mb-1">
-                CATEGORY 02
-              </div>
-
               <h3 className="text-2xl font-extrabold text-slate-900 font-display mb-3 group-hover:text-blue-700 transition-colors">
                 SERVICES
               </h3>
@@ -208,10 +335,6 @@ export function HomePage({ onOpenBooking }: HomePageProps) {
             <div>
               <div className="w-14 h-14 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 flex items-center justify-center mb-6 group-hover:scale-105 transition-transform">
                 <Palmtree className="w-7 h-7" />
-              </div>
-
-              <div className="text-[11px] font-bold text-emerald-700 uppercase tracking-widest mb-1">
-                CATEGORY 03
               </div>
 
               <h3 className="text-2xl font-extrabold text-slate-900 font-display mb-3 group-hover:text-emerald-700 transition-colors">

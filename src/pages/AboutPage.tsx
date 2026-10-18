@@ -32,12 +32,12 @@ export function AboutPage({ onOpenBooking }: AboutPageProps) {
             className="inline-flex items-center gap-2 text-xs font-bold text-slate-500 hover:text-amber-600 transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
-            <span>Back to Home Landing Hub</span>
+            <span>Back to Home</span>
           </Link>
 
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-100 text-amber-900 text-xs font-semibold">
             <Globe2 className="w-3.5 h-3.5 text-amber-600" />
-            <span>Top-Level Category: About Us</span>
+            <span>About Us</span>
           </div>
         </div>
 
@@ -48,7 +48,7 @@ export function AboutPage({ onOpenBooking }: AboutPageProps) {
             <span>Our Heritage & Travel Philosophy</span>
           </div>
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight font-display">
-            {ABOUT_US_DATA.title}
+            About Us
           </h1>
           <p className="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed">
             {ABOUT_US_DATA.tagline}
@@ -64,6 +64,8 @@ export function AboutPage({ onOpenBooking }: AboutPageProps) {
               <img
                 src={destDiani}
                 alt="Pushworld Travel Experiences"
+                loading="lazy"
+                decoding="async"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 referrerPolicy="no-referrer"
               />
@@ -84,6 +86,8 @@ export function AboutPage({ onOpenBooking }: AboutPageProps) {
               <img
                 src={sceneResort}
                 alt="Luxury Accommodation Support"
+                loading="lazy"
+                decoding="async"
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"
               />

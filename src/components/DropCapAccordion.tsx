@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ChevronDown, MessageSquare, ArrowRight, CheckCircle2, Tag, Clock } from 'lucide-react';
+import { ChevronDown, MessageSquare, ArrowRight, CheckCircle2, Tag, Clock, Phone } from 'lucide-react';
 import { COMPANY_INFO } from '../data/travelData';
 
 export interface DropCapOption {
@@ -187,36 +187,44 @@ export function DropCapAccordionList({ items, onOpenBooking, categoryLabel }: Dr
                 )}
 
                 {/* Pricing & Terms Box */}
-                <div className="p-4 rounded-xl bg-slate-900 text-white flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 mb-4">
-                  <div>
+                <div className="p-4 sm:p-5 rounded-xl bg-slate-900 text-white flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-4">
+                  <div className="space-y-1">
                     <span className="text-[10px] font-bold uppercase tracking-wider text-amber-400 block">
                       Pricing & Quotation
                     </span>
-                    <span className="text-sm sm:text-base font-bold text-white">
-                      {item.pricingOrTerms || 'Personalised Custom Quotation'}
+                    <span className="text-sm sm:text-base font-bold text-white block">
+                      {item.pricingOrTerms || 'Call or Submit a Quotation Request for Full Pricing'}
                     </span>
-                    <span className="text-[11px] text-slate-400 block mt-0.5">
-                      Direct quote prepared based on your specific dates, group size, and preferences.
+                    <span className="text-xs text-amber-200/90 block font-medium">
+                      Notice: To receive full and accurate pricing, please make a phone call to our desk or submit a quotation request tailored to your dates.
                     </span>
                   </div>
 
-                  <div className="flex items-center gap-2">
+                  <div className="flex flex-wrap items-center gap-2 w-full md:w-auto">
                     <button
                       type="button"
                       onClick={() => onOpenBooking(item.title)}
-                      className="flex-1 sm:flex-none px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 active:scale-95 text-slate-950 font-bold text-xs shadow transition-all flex items-center justify-center gap-1.5"
+                      className="flex-1 md:flex-none px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 active:scale-95 text-slate-950 font-bold text-xs shadow transition-all flex items-center justify-center gap-1.5 cursor-pointer"
                     >
                       <span>Request Quote</span>
                       <ArrowRight className="w-3.5 h-3.5" />
                     </button>
 
                     <a
+                      href={`tel:${COMPANY_INFO.phone}`}
+                      className="flex-1 md:flex-none px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 active:scale-95 text-white font-bold text-xs transition-all flex items-center justify-center gap-1.5 border border-slate-700 cursor-pointer"
+                    >
+                      <Phone className="w-3.5 h-3.5 text-amber-400" />
+                      <span>Call for Price</span>
+                    </a>
+
+                    <a
                       href={`${COMPANY_INFO.whatsappUrl}?text=${encodeURIComponent(
-                        `Hi Pushworld Travel, I am inquiring about "${item.title}" under ${categoryLabel || 'your travel catalog'}. Please send details.`
+                        `Hi Push World Travel, I am inquiring about "${item.title}". Please send full pricing and details.`
                       )}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 sm:flex-none px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 active:scale-95 text-white font-bold text-xs transition-all flex items-center justify-center gap-1.5"
+                      className="flex-1 md:flex-none px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 active:scale-95 text-white font-bold text-xs transition-all flex items-center justify-center gap-1.5 cursor-pointer"
                     >
                       <MessageSquare className="w-3.5 h-3.5" />
                       <span>WhatsApp</span>

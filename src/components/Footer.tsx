@@ -89,7 +89,7 @@ export function Footer({ onOpenBooking }: FooterProps) {
               </li>
               <li>
                 <Link to="/services" className="hover:text-amber-400 transition-colors font-medium">
-                  SERVICES & EXCURSIONS
+                  SERVICES & DAY TOURS
                 </Link>
               </li>
               <li>
@@ -117,12 +117,12 @@ export function Footer({ onOpenBooking }: FooterProps) {
                 </Link>
               </li>
               <li>
-                <Link to="/services?tab=excursions" className="hover:text-amber-400 transition-colors">
-                  Safari & Day Excursions
+                <Link to="/services?tab=tours" className="hover:text-amber-400 transition-colors">
+                  Safari & Day Tours
                 </Link>
               </li>
               <li>
-                <Link to="/services?tab=excursions" className="hover:text-amber-400 transition-colors">
+                <Link to="/services?tab=tours" className="hover:text-amber-400 transition-colors">
                   Hot Air Balloon Flights
                 </Link>
               </li>

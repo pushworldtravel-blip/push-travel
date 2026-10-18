@@ -77,7 +77,7 @@ export const SAFARI_STANDARD_INCLUSIONS = [
 export const SAFARI_STANDARD_EXCLUSIONS = [
   'International and domestic flights (available as an add-on service upon request).',
   'Personal expenses, laundry, and discretionary gratuities to guides and lodge staff.',
-  'Optional excursions such as hot air balloon safaris or night game drives.',
+  'Optional side tours and activities such as hot air balloon safaris or night game drives.',
   'Visa assistance fees (provided under our separate Visa Assistance advisory desk).',
 ];
 
@@ -120,11 +120,11 @@ export const PACKAGES: PackageItem[] = [
       'Return SGR train transfers from Nairobi or direct flight connections',
       'Daily oceanfront buffet breakfast and dinner',
     ],
-    summaryInclusion: 'Resort accommodation, transfers, meals and marine excursions included',
+    summaryInclusion: 'Resort accommodation, transfers, meals and marine boat tours included',
     inclusions: [
       'Accommodation and Meals: 4-Star beachfront resort stay with daily buffet breakfast and dinner.',
       'Ground Transfers: Roundtrip transfers between Mombasa SGR station or Ukunda/Malindi airstrip and your resort.',
-      'Excursions: Glass-bottom boat reef cruise and marine park exploration.',
+      'Marine Tours: Glass-bottom boat reef cruise and marine park exploration.',
       'Concierge Coordination: 24/7 dedicated travel support from Push World Travel Ltd.',
     ],
     exclusions: [
@@ -150,11 +150,11 @@ export const PACKAGES: PackageItem[] = [
       'Daily buffet breakfast and chef-curated dinner',
       'Glass-bottom boat marine tour with snorkeling gear',
     ],
-    summaryInclusion: 'Resort accommodation, transfers, meals and marine excursions included',
+    summaryInclusion: 'Resort accommodation, transfers, meals and marine boat tours included',
     inclusions: [
       'Accommodation and Meals: Selected beachfront resort room with private veranda and specified meal plan.',
       'Ground Transfers: Private roundtrip transfers from Ukunda airstrip or Mombasa SGR terminal.',
-      'Marine Excursion: Guided coral reef excursion with snorkeling equipment.',
+      'Marine Boat Tour: Guided coral reef tour with snorkeling equipment.',
       'Concierge Support: Personal travel assistance throughout your stay.',
     ],
     exclusions: [
@@ -172,14 +172,14 @@ export const PACKAGES: PackageItem[] = [
     duration: '5 Days / 4 Nights',
     validity: 'Year-round bespoke departures',
     image: sceneResort,
-    overview: 'Indulge in private luxury villas along Diani Beach coupled with an exclusive day excursion to the secluded mangrove sands of Chale Island.',
+    overview: 'Indulge in private luxury villas along Diani Beach coupled with an exclusive day trip to the secluded mangrove sands of Chale Island.',
     highlights: [
       'Private oceanfront villa with plunge pool access',
       'Guided motorized dhow cruise to Kisite-Mpunguti Marine Park and Wasini Island',
       'Fresh seafood lunch feast on Wasini Island',
       'VIP private airport meet-and-greet in Mombasa or Ukunda',
     ],
-    summaryInclusion: 'Villa accommodation, private transfers, meals and island excursions included',
+    summaryInclusion: 'Villa accommodation, private transfers, meals and island day trips included',
     inclusions: [
       'Accommodation and Meals: 5-Star boutique villa with daily gourmet breakfast and dinner.',
       'Private Transfers: Chauffeur-driven luxury SUV transfers to and from Diani.',
@@ -208,11 +208,11 @@ export const PACKAGES: PackageItem[] = [
       'Fresh coastal seafood dining experiences',
       'Pristine uncrowded beaches and tropical gardens',
     ],
-    summaryInclusion: 'Resort accommodation, transfers, meals and marine excursions included',
+    summaryInclusion: 'Resort accommodation, transfers, meals and marine boat tours included',
     inclusions: [
       'Accommodation and Meals: Boutique beachfront resort stay on half-board meal plan.',
       'Ground Transfers: Private roundtrip transfers from Malindi airport or SGR Mombasa.',
-      'Park Excursions: Marine national park boat excursion and entry fees.',
+      'Park Tours: Marine national park boat tour and entry fees.',
       'Local Guide: Guided tour of the ancient Gede coastal ruins.',
     ],
     exclusions: [
@@ -326,7 +326,7 @@ export const PACKAGES: PackageItem[] = [
       'Safari Transport: Travel in a 4x4 Land Cruiser equipped with a pop-up roof for better wildlife viewing.',
       'Accommodation and Meals: Rift Valley safari lodge accommodation with full-board dining.',
       'Park Fees: Lake Nakuru National Park fees and Crescent Island sanctuary access.',
-      'Boat Cruise: Motorized Lake Naivasha scenic excursion with life jackets and guide.',
+      'Boat Cruise: Motorized Lake Naivasha scenic boat tour with life jackets and guide.',
     ],
     exclusions: SAFARI_STANDARD_EXCLUSIONS,
     callToAction: 'Contact Us for a Tailored Package',
@@ -437,7 +437,7 @@ export const PACKAGES: PackageItem[] = [
       'International return flight tickets (tailored airline booking provided on request).',
       'Statutory visa processing fees payable to UAE immigration authorities.',
       'Tourism Dirham hotel tax payable directly at hotel check-in.',
-      'Personal expenses, room service, and optional luxury excursions.',
+      'Personal expenses, room service, and optional luxury tours.',
     ],
     callToAction: 'Contact Us for a Tailored Package',
   },
@@ -449,10 +449,10 @@ export const PACKAGES: PackageItem[] = [
     duration: '6 Days / 5 Nights',
     validity: 'Year-round bespoke departures',
     image: destDubai,
-    overview: 'A premier Arabian Gulf getaway combining 5-star Dubai Marina waterfront luxury, Burj Khalifa SKY views, Miracle Garden, and a full-day VIP excursion to Abu Dhabi and the Sheikh Zayed Grand Mosque.',
+    overview: 'A premier Arabian Gulf getaway combining 5-star Dubai Marina waterfront luxury, Burj Khalifa SKY views, Miracle Garden, and a full-day VIP day tour to Abu Dhabi and the Sheikh Zayed Grand Mosque.',
     highlights: [
       '5-Star Dubai Marina hotel stay with private balcony views',
-      'Full-day Abu Dhabi excursion: Sheikh Zayed Grand Mosque, Louvre Abu Dhabi & Corniche',
+      'Full-day Abu Dhabi day tour: Sheikh Zayed Grand Mosque, Louvre Abu Dhabi & Corniche',
       'VIP Dubai Miracle Garden and Global Village seasonal passes',
       'Private luxury desert dune drive with falconry demonstration and Bedouin feast',
     ],
@@ -488,7 +488,7 @@ export const PACKAGES: PackageItem[] = [
     summaryInclusion: 'Resort stay, island tours, spice plantation visit & airport transfers included',
     inclusions: [
       'Accommodation and Meals: 4-Star beachfront resort in Nungwi with half-board dining.',
-      'Island Excursions: Stone Town walking tour, Prison Island boat trip, and organic spice tour.',
+      'Island Tours: Stone Town walking tour, Prison Island boat trip, and organic spice tour.',
       'Airport Transfers: Private airport or ferry terminal roundtrip transfers.',
       'Concierge Coordination: 24/7 dedicated support from Push World Travel Ltd.',
     ],
@@ -517,7 +517,7 @@ export const PACKAGES: PackageItem[] = [
     summaryInclusion: 'Hotel accommodation, guided city tours & return airport transfers included',
     inclusions: [
       'Accommodation and Meals: 4-Star Victoria & Alfred Waterfront hotel with daily breakfast.',
-      'Guided Day Tours: Full-day Cape Peninsula tour and Cape Winelands excursion.',
+      'Guided Day Tours: Full-day Cape Peninsula tour and Cape Winelands day tour.',
       'Airport Transfers: Private airport transfers in Cape Town.',
       'Entry Coordination: Table Mountain cableway and nature reserve admissions.',
     ],
@@ -576,7 +576,7 @@ export const PACKAGES: PackageItem[] = [
     summaryInclusion: 'All-inclusive 5-star resort, catamaran cruise, island tour & private airport transfers included',
     inclusions: [
       'Accommodation and Meals: 5-Star beach resort on all-inclusive plan (breakfast, lunch, dinner & drinks).',
-      'Catamaran Excursion: Day cruise with snorkeling gear, barbecue buffet, and drinks.',
+      'Catamaran Cruise: Day cruise with snorkeling gear, barbecue buffet, and drinks.',
       'Private Transfers: Roundtrip airport transfers in air-conditioned executive vehicle.',
       'Island Tour: Guided scenic tour of southwestern Mauritian landmarks.',
     ],
@@ -619,11 +619,11 @@ export const PACKAGES: PackageItem[] = [
   },
 
   {
-    id: 'nairobi-day-excursions',
+    id: 'nairobi-day-tours',
     title: 'Nairobi National Park, Giraffe Centre & Sheldrick Elephant Safari',
     category: 'safari',
     destination: 'Nairobi & Surrounds, Kenya',
-    duration: 'Full Day Excursion',
+    duration: 'Full Day Tour',
     validity: 'Daily departures from Nairobi hotels / airport',
     image: heroSafari,
     overview: 'Experience Kenyas capital wildlife wonders: lion and rhino spotting in Nairobi National Park against the skyline, hand-feeding endangered Rothschild giraffes, and baby elephant rehabilitation visits.',
@@ -642,7 +642,7 @@ export const PACKAGES: PackageItem[] = [
       'Transfers: Roundtrip hotel or Jomo Kenyatta International Airport (JKIA) pickup and drop-off.',
     ],
     exclusions: SAFARI_STANDARD_EXCLUSIONS,
-    callToAction: 'Book Day Excursion',
+    callToAction: 'Book Day Tour',
   },
   {
     id: 'mombasa-north-coast',
@@ -662,7 +662,7 @@ export const PACKAGES: PackageItem[] = [
     summaryInclusion: 'Beachfront resort, guided cultural tours, meals & transfers included',
     inclusions: [
       'Accommodation and Meals: 4-Star beachfront resort in Nyali/Bamburi with half-board dining.',
-      'Heritage Excursion: Guided tour of Fort Jesus and Old Town with admission included.',
+      'Heritage Tour: Guided tour of Fort Jesus and Old Town with admission included.',
       'Transfers: Roundtrip transfers between Mombasa SGR terminus or Moi International Airport.',
       'Concierge Coordination: 24/7 travel desk support.',
     ],
@@ -707,12 +707,12 @@ export const PACKAGES: PackageItem[] = [
     duration: '7 Days / 6 Nights',
     validity: 'November to April peak & year-round departures',
     image: sceneResort,
-    overview: 'Vibrant Asian culture meets tropical relaxation: ornate Bangkok temples, bustling floating markets, speedboat excursions to Phi Phi Islands, and luxury beachfront resort living in Phuket.',
+    overview: 'Vibrant Asian culture meets tropical relaxation: ornate Bangkok temples, bustling floating markets, speedboat trips to Phi Phi Islands, and luxury beachfront resort living in Phuket.',
     highlights: [
       'Bangkok Grand Palace, Wat Pho Reclining Buddha & Chao Phraya River dinner cruise',
       'Damnoen Saduak floating market cultural exploration',
       'Phuket 4-Star beachfront resort stay with daily tropical breakfast',
-      'Full-day speedboat island-hopping excursion to Phi Phi Islands & Maya Bay',
+      'Full-day speedboat island-hopping tour to Phi Phi Islands & Maya Bay',
     ],
     summaryInclusion: 'Hotels in Bangkok & Phuket, island speedboat tour, domestic flights & transfers included',
     inclusions: [
@@ -987,7 +987,7 @@ export const TESTIMONIALS = [
     trip: 'Maasai Mara 3-Day Safari',
   },
   {
-    quote: 'Our Diani Beach holiday was the smoothest trip we have ever taken. Flight bookings, hotel check-in at the resort, and marine excursions were coordinated without a single hitch. Highly recommended.',
+    quote: 'Our Diani Beach holiday was the smoothest trip we have ever taken. Flight bookings, hotel check-in at the resort, and marine boat tours were coordinated without a single hitch. Highly recommended.',
     author: 'Wanjiku M. & Family',
     role: 'Business Consultant',
     location: 'Kiambu / Mombasa',

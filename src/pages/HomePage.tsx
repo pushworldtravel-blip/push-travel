@@ -312,13 +312,13 @@ export function HomePage({ onOpenBooking }: HomePageProps) {
               </h3>
 
               <p className="text-sm text-slate-600 leading-relaxed mb-6">
-                Complete travel management solutions covering luxury travel, custom trip planning, flights, hotels, airport transfers, plus guided day excursions and wildlife activities.
+                Complete travel management solutions covering luxury travel, custom trip planning, flights, hotels, airport transfers, plus guided day tours and wildlife activities.
               </p>
             </div>
 
             <div className="pt-5 border-t border-slate-100 flex items-center justify-between">
               <span className="text-xs font-semibold text-slate-500">
-                Services & Excursions
+                Services & Day Tours
               </span>
               <Link
                 to="/services"

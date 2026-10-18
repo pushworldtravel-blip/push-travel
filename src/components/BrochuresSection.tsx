@@ -286,7 +286,7 @@ export function BrochuresSection() {
                           </div>
                           <div className="p-3 bg-white rounded-lg border border-slate-200">
                             <strong className="text-slate-900 block text-xs mb-0.5">Day 2: Prime Exploration</strong>
-                            <p className="text-slate-600 text-xs">Comprehensive morning and afternoon game drives or marine excursions led by experienced local guides.</p>
+                            <p className="text-slate-600 text-xs">Comprehensive morning and afternoon game drives or marine boat tours led by experienced local guides.</p>
                           </div>
                           <div className="p-3 bg-white rounded-lg border border-slate-200">
                             <strong className="text-slate-900 block text-xs mb-0.5">Day 3 & Beyond: Panoramic Trails & Leisure</strong>

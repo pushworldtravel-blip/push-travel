@@ -153,12 +153,12 @@ export function PackagesSection({
                   image: '',
                   overview: 'Bespoke holiday or safari package tailored to your specific schedule, accommodation preferences, and group size.',
                   highlights: ['Customized itinerary design', 'Dedicated travel manager', 'Competitive pricing'],
-                  summaryInclusion: 'Tailored transport, accommodation, and excursions included',
+                  summaryInclusion: 'Tailored transport, accommodation, and day tours included',
                   inclusions: [
                     'Passenger Insurance: Passenger insurance cover, subject to the applicable policy terms.',
                     'Safari Transport: Travel in a 4x4 Land Cruiser or private transfers as specified.',
                     'Accommodation and Meals: Lodge/hotel accommodation and meals as specified.',
-                    'Park Fees / Tours: Entry and excursion fees as specified.',
+                    'Park Fees / Tours: Entry and sightseeing tour fees as specified.',
                   ],
                   exclusions: ['Personal expenses and optional extras'],
                   callToAction: 'Request a Custom Quote',
@@ -315,7 +315,7 @@ export function PackagesSection({
               ],
               exclusions: [
                 'Items of personal nature',
-                'Optional excursions',
+                'Optional side tours and activities',
                 'Separate visa fees',
               ],
               callToAction: 'Request a Custom Quote',

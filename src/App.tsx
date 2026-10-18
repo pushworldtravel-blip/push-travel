@@ -84,8 +84,9 @@ export default function App() {
 
               {/* Aliases redirecting to respective parent categories */}
               <Route path="/packages" element={<Navigate to="/products" replace />} />
-              <Route path="/excursions" element={<Navigate to="/services?tab=excursions" replace />} />
-              <Route path="/activities" element={<Navigate to="/services?tab=excursions" replace />} />
+              <Route path="/tours" element={<Navigate to="/services?tab=tours" replace />} />
+              <Route path="/excursions" element={<Navigate to="/services?tab=tours" replace />} />
+              <Route path="/activities" element={<Navigate to="/services?tab=tours" replace />} />
 
               {/* 5. Contacts Page: Dedicated standalone page with office contact and reviews */}
               <Route path="/contact" element={<ContactPage onOpenBooking={handleOpenBooking} />} />

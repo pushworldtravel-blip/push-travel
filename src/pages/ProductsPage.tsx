@@ -53,7 +53,7 @@ export function ProductsPage({ onOpenBooking }: ProductsPageProps) {
       badge: 'Beach Holiday Package',
       title: 'Coastal Beachfront Resort & Island Holiday Packages',
       subtitle: 'Diani Beach, Watamu Marine Reserve, Chale Island & Malindi',
-      description: 'Relax on award-winning powder-white sands bordered by warm Indian Ocean turquoise waters. Our coastal packages include vetted 4-star and 5-star beachfront resorts, return flight or SGR Madaraka Express train ticketing, seamless private station/airport transfers, and complimentary coral reef marine excursions.',
+      description: 'Relax on award-winning powder-white sands bordered by warm Indian Ocean turquoise waters. Our coastal packages include vetted 4-star and 5-star beachfront resorts, return flight or SGR Madaraka Express train ticketing, seamless private station/airport transfers, and complimentary coral reef marine boat tours.',
       pricingOrTerms: 'Tailored Resort Packages Quoted per Person Sharing',
       durationOrTimeline: '4 Days / 3 Nights & 5 Days / 4 Nights',
       image: destDiani,
@@ -61,7 +61,7 @@ export function ProductsPage({ onOpenBooking }: ProductsPageProps) {
         'Beachfront ocean-view rooms with private balconies & sea breezes',
         'Flexible meal plans: Half-Board, Full-Board, or All-Inclusive Drinks & Dining',
         'Private airport / SGR train station meet-and-greet transfers included',
-        'Complimentary glass-bottom boat reef excursion and snorkeling equipment',
+        'Complimentary glass-bottom boat reef tour and snorkeling equipment',
       ],
       subOptions: [
         { title: 'Diani Beachfront Turquoise Escape (3D/2N)', desc: 'Short weekend recharge on Kenyas premier tropical white sand coastline.' },
@@ -124,7 +124,7 @@ export function ProductsPage({ onOpenBooking }: ProductsPageProps) {
       ],
       subOptions: [
         { title: 'Dubai City Explorer (5D/4N)', desc: 'The classic introductory package covering iconic architecture, shopping & desert.' },
-        { title: 'Dubai & Abu Dhabi Grand Combo (7D/6N)', desc: 'Includes full-day excursion to Sheikh Zayed Grand Mosque and Ferrari World.' },
+        { title: 'Dubai & Abu Dhabi Grand Combo (7D/6N)', desc: 'Includes full-day trip to Sheikh Zayed Grand Mosque and Ferrari World.' },
         { title: 'Luxury Atlantis Palm Jumeirah Escape (5D/4N)', desc: 'Stay at Palm Jumeirah with unlimited access to Aquaventure Waterpark.' },
       ],
       inclusions: [
@@ -149,7 +149,7 @@ export function ProductsPage({ onOpenBooking }: ProductsPageProps) {
         '3 Nights in vibrant Bangkok (4-star central hotel) with Grand Palace guided tour',
         '3 Nights in Phuket (beachfront resort) with direct access to Andaman Sea',
         'Domestic flight between Bangkok and Phuket with baggage allowance included',
-        'Full-day speedboat island-hopping excursion to Phi Phi Islands and Maya Bay',
+        'Full-day speedboat island-hopping tour to Phi Phi Islands and Maya Bay',
       ],
       subOptions: [
         { title: 'Bangkok & Phuket Classic (7D/6N)', desc: 'Perfect balance of city culture, shopping, and tropical beach relaxation.' },
@@ -190,13 +190,13 @@ export function ProductsPage({ onOpenBooking }: ProductsPageProps) {
       ],
     },
     {
-      id: 'nairobi-day-excursion-package',
+      id: 'nairobi-day-tour-package',
       category: 'safari',
       dropCap: 'N',
       badge: 'Day Tour Package',
       title: 'Nairobi City & Wildlife Sanctuary Day Tour Package',
       subtitle: 'Nairobi National Park, Daphne Sheldrick Elephant Orphanage & Giraffe Centre',
-      description: 'Complete all-in-one day excursion package covering the wildlife highlights of Kenyas capital. Includes private transport, professional naturalist guide, guaranteed admission tickets, and optional traditional Kenyan luncheon.',
+      description: 'Complete all-in-one day tour package covering the wildlife highlights of Kenyas capital. Includes private transport, professional naturalist guide, guaranteed admission tickets, and optional traditional Kenyan luncheon.',
       pricingOrTerms: 'KES 7,500 (Residents) / USD $135 (Non-Residents) All-Inclusive',
       durationOrTimeline: 'Full Day (06:00 AM - 04:30 PM)',
       features: [

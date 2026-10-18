@@ -13,12 +13,9 @@ import {
   Briefcase, 
   Compass, 
   ArrowLeft, 
-  Headphones, 
   Sparkles, 
-  MessageSquare, 
   Phone,
-  Layers,
-  CheckCircle2
+  Home
 } from 'lucide-react';
 
 interface ServicesPageProps {
@@ -27,17 +24,17 @@ interface ServicesPageProps {
 
 export function ServicesPage({ onOpenBooking }: ServicesPageProps) {
   const [searchParams, setSearchParams] = useSearchParams();
-  const initialTab = searchParams.get('tab') === 'excursions' ? 'excursions' : 'all';
-  const [activeFilter, setActiveFilter] = useState<'all' | 'services' | 'excursions'>(initialTab);
+  const initialTab = searchParams.get('tab') === 'tours' || searchParams.get('tab') === 'excursions' ? 'tours' : 'all';
+  const [activeFilter, setActiveFilter] = useState<'all' | 'services' | 'tours'>(initialTab);
 
   useEffect(() => {
     const tab = searchParams.get('tab');
-    if (tab === 'excursions') {
-      setActiveFilter('excursions');
+    if (tab === 'tours' || tab === 'excursions') {
+      setActiveFilter('tours');
     }
   }, [searchParams]);
 
-  // Core Travel Management Services
+  // Core Travel Management & BnB Stays
   const travelServices: DropCapOption[] = [
     {
       id: 'luxury-premium-travel',
@@ -46,7 +43,7 @@ export function ServicesPage({ onOpenBooking }: ServicesPageProps) {
       title: 'Luxury and Premium Travel Management',
       subtitle: 'Tailored High-End Escapes, 5-Star Lodges & Private Aviation',
       description: 'Exclusive luxury travel planning for discerning travelers, executive delegations, and couples seeking the finest hospitality across Kenya and internationally. We orchestrate private chartered flights, presidential safari suites, dedicated 4x4 Land Cruisers with senior naturalist guides, and seamless VIP fast-track airport clearances.',
-      pricingOrTerms: 'Itemized Bespoke Proposal',
+      pricingOrTerms: 'Call or Submit a Quotation Request for Full Pricing',
       durationOrTimeline: 'Flexible Itineraries',
       image: sceneResort,
       features: [
@@ -74,7 +71,7 @@ export function ServicesPage({ onOpenBooking }: ServicesPageProps) {
       title: 'Custom Trip Planner & Tailored Itineraries',
       subtitle: 'Personalized Journeys Designed Around Your Dates, Budget & Group',
       description: 'Our bespoke trip planner pairs you with a senior Kenya travel advisor to build your journey from the ground up. Whether coordinating a multi-generation family safari, a honeymoon beach break, or a solo discovery trek, we balance driving times, wildlife movements, and accommodation styles to your exact pace.',
-      pricingOrTerms: 'Complimentary Consultation & Itemized Quotation',
+      pricingOrTerms: 'Call or Submit a Quotation Request for Full Pricing',
       durationOrTimeline: '3 to 21+ Days Custom Duration',
       image: heroSafari,
       features: [
@@ -102,47 +99,46 @@ export function ServicesPage({ onOpenBooking }: ServicesPageProps) {
       title: 'Corporate Travel, Offsites & Team Building',
       subtitle: 'Executive Business Travel, Group Delegations & Team Retreats',
       description: 'End-to-end corporate travel management for corporate enterprises, NGOs, embassies, and academic institutions. We coordinate group flight tickets, negotiate discounted corporate hotel blocks, organize conference transport, and design high-impact team-building retreats in scenic locations like Naivasha, Nakuru, and Mount Kenya.',
-      pricingOrTerms: 'Corporate Retainer & Volume Discount Invoicing',
+      pricingOrTerms: 'Call or Submit a Quotation Request for Corporate Pricing',
       durationOrTimeline: 'Day Events, Weekend Offsites & Annual Retainers',
       image: sceneMountain,
       features: [
         'Full corporate retreat planning with certified facilitators',
         'Group airfare reservations & flexible corporate change policies',
-        'Executive chauffeur transport, luxury coaches & airport shuttles',
-        'Consolidated tax invoicing and dedicated corporate travel account manager',
+        'Executive ground transfers with uniformed licensed chauffeurs',
+        'Consolidated company monthly invoicing and transparent reporting',
       ],
       subOptions: [
-        { title: 'Executive Strategy Offsites', desc: 'Private boardroom facilities in serene highland and lakeside retreats.' },
-        { title: 'Company-Wide Team Building Escapes', desc: 'Outdoor obstacle challenges, leadership simulations, and evening bonfires.' },
-        { title: 'Conference & MICE Logistics', desc: 'Airport welcome desks, delegate transfers, and VIP speaker accommodations.' },
+        { title: 'Team Building in Naivasha & Rift Valley', desc: 'Dynamic outdoor obstacle courses, raft building, and scenic lakeside bonfire retreats.' },
+        { title: 'Annual General Meetings & Conferences', desc: 'Audio-visual setup, delegate accommodation blocks, and airport shuttle fleets.' },
+        { title: 'Executive Board Retreats', desc: 'Ultra-private safari conservancy lodges with dedicated boardroom facilities.' },
       ],
       inclusions: [
-        'Conference hall hire with AV equipment, high-speed WiFi & stationery',
-        'Buffet lunch, morning & afternoon tea breaks with pastries',
-        'Group transport in air-conditioned executive buses or private vans',
-        'Facilitated team activities with professional team trainers',
+        'Designated corporate account manager assigned to your organization',
+        'Negotiated group rates with verified hotel and resort partners',
+        'Detailed VAT-compliant invoicing and travel expenditure logs',
       ],
     },
     {
-      id: 'flight-reservations-ticketing',
+      id: 'flight-air-ticketing',
       dropCap: 'F',
-      badge: 'Domestic & Global',
-      title: 'Flight Reservations, Ticketing & Airline Desk',
-      subtitle: 'Kenya Domestic Safari Bush Flights & Global International Fares',
-      description: 'Access competitive airfares through our direct airline partnerships. We manage domestic scheduled bush hops into Maasai Mara, Amboseli, Diani/Ukunda, Lamu, and Samburu, as well as international long-haul itineraries connecting Nairobi to Dubai, London, Europe, South Africa, and Asia.',
-      pricingOrTerms: 'Best Available Published & Negotiated Group Fares',
-      durationOrTimeline: 'Instant Issuance & Schedule Monitoring',
+      badge: 'Air Travel Desk',
+      title: 'Flight Bookings & Air Ticketing Services',
+      subtitle: 'Domestic Safari Bush Flights, Regional Connections & International Routes',
+      description: 'Effortless flight reservation desk covering scheduled commercial airlines and remote bush airstrip charters. We manage seat selection, extra baggage allowances, flight date changes, and fly-in safari connections to airstrips in Maasai Mara (Keekorok, Ol Kiombo, Musiara), Amboseli, Samburu, Nanyuki, Diani (Ukunda), and Malindi.',
+      pricingOrTerms: 'Call or Submit a Quotation Request for Flight Fares',
+      durationOrTimeline: 'Instant E-Ticket Issuance & 24/7 Monitoring',
       image: destDubai,
       features: [
-        'Direct bush flights from Wilson Airport (WIL) to national park airstrips',
-        'International airline booking with checked luggage allowances',
-        'Assistance with seat selections, extra baggage, and special meal requests',
-        '24/7 flight delay rebooking assistance and schedule tracking',
+        'Direct scheduled bush flights connecting Wilson Airport (WIL) to national parks',
+        'Competitive fares on Kenya Airways, Jambojet, Emirates, Qatar, Ethiopian & more',
+        'Comprehensive re-routing, cancellation, and date rebooking management',
+        'Group flight allocations for weddings, delegations, and safari parties',
       ],
       subOptions: [
-        { title: 'Safari Bush Hop Flights', desc: 'Save 6+ hours of road travel with scenic 45-minute flights into reserve airstrips.' },
-        { title: 'Group & Delegation Airfares', desc: 'Flexible name change policies and staggered payment deadlines for groups.' },
-        { title: 'Business Class Upgrades', desc: 'Negotiated premium cabin ticketing on major international carriers.' },
+        { title: 'Wilson Airport Bush Flights', desc: 'Scheduled scenic Caravans connecting Nairobi directly into Maasai Mara, Amboseli, and Samburu.' },
+        { title: 'Coast Commuter Flights', desc: 'Quick 50-minute flights from Nairobi to Ukunda (Diani), Moi Airport (Mombasa), or Malindi.' },
+        { title: 'International Airline Ticketing', desc: 'Negotiated economy and business class ticketing on major world carriers.' },
       ],
       inclusions: [
         'Electronic ticket issuance with verifiable PNR airline confirmation',
@@ -151,30 +147,59 @@ export function ServicesPage({ onOpenBooking }: ServicesPageProps) {
       ],
     },
     {
-      id: 'hotel-villas-vacation-homes',
+      id: 'hotel-lodges-resorts',
       dropCap: 'H',
-      badge: 'Vetted Stays',
-      title: 'Hotels, Beachfront Villas, Vacation Homes & B&Bs',
-      subtitle: 'Curated Accommodations Across Cities, Coastlines & Savannahs',
-      description: 'We take the guesswork out of booking accommodation by offering personally vetted properties. From 5-star international business hotels in Nairobi to secluded beachfront pool villas in Diani and Watamu, rustic eco-cottages, and serviced apartments, every stay matches our high safety and comfort standards.',
-      pricingOrTerms: 'Negotiated Agency Rates & Exclusive Value Add-Ons',
-      durationOrTimeline: 'Nightly, Weekly & Monthly Stays',
+      badge: 'Hotels & Lodges',
+      title: 'Hotels, Luxury Safari Lodges & Boutique Resorts',
+      subtitle: 'Curated 5-Star Lodges, Tented Camps & International Hotels',
+      description: 'We negotiate and secure the best room rates at top luxury safari lodges, tented camps, beachfront resorts, and business hotels across Kenya and internationally. Every property is hand-selected for premier service, hygiene, and exceptional comfort.',
+      pricingOrTerms: 'Call or Submit a Quotation Request for Full Pricing',
+      durationOrTimeline: 'Flexible Nightly, Weekly & Group Bookings',
       image: sceneResort,
       features: [
-        'Handpicked beachfront villas with private swimming pools and private chefs',
         'Safari luxury tented camps situated along major wildlife migratory paths',
-        'Serviced urban apartments in Westlands and Nairobi CBD for business trips',
-        'Negotiated rates including complimentary breakfast, room upgrades & late check-out',
+        'Top 5-star international business hotels in Nairobi and major cities',
+        'Beachfront resort rooms and suites in Diani Beach, Nyali, and Watamu',
+        'Negotiated preferential rates including breakfast, room upgrades & late checkout',
       ],
       subOptions: [
-        { title: 'Private Diani Beachfront Villas', desc: 'Spacious 2 to 6-bedroom private compounds ideal for families and friend groups.' },
-        { title: 'Authentic Safari Tented Camps', desc: 'Immersive bush luxury under canvas with en-suite bathrooms and private verandas.' },
-        { title: 'Nairobi Airport Transit Stays', desc: 'Quiet, secure hotels within 15 minutes of Jomo Kenyatta International Airport.' },
+        { title: 'Luxury Safari Tented Lodges', desc: 'Immersive bush luxury under canvas with en-suite bathrooms and river views.' },
+        { title: '5-Star City Executive Hotels', desc: 'Central locations in Westlands, Upper Hill, and CBD with conference facilities.' },
+        { title: 'Oceanfront Beach Resorts', desc: 'All-inclusive and half-board beachfront stays in Diani, Mombasa, and Malindi.' },
       ],
       inclusions: [
         'Confirmed accommodation voucher with guaranteed room category',
         'Specified meal plans (Bed & Breakfast, Half-Board, or All-Inclusive)',
-        'Direct concierge line with the property management',
+        'Direct coordination with property management for special requests',
+      ],
+    },
+    {
+      id: 'bnb-furnished-rentals',
+      dropCap: 'B',
+      badge: 'All Kinds of BnB Available',
+      title: 'BnB Services & Furnished Stays (Available on Request)',
+      subtitle: 'All Kinds of BnB Available at Your Request Across Nairobi, Coast & Upcountry',
+      description: 'Looking for a comfortable bed & breakfast, an executive furnished city apartment, a coastal beach villa, or a serene countryside cottage? We provide all kinds of BnB options available directly at your request. Whether you need a modern studio or 2-3 bedroom apartment in Nairobi (Kilimani, Westlands, Kileleshwa, Upper Hill, Karen), a private oceanfront pool villa in Diani or Watamu, or a peaceful countryside cottage in Naivasha or Nanyuki, our team finds and confirms the ideal vetted stay matching your exact requirements and budget.',
+      pricingOrTerms: 'Call or Submit a Quotation Request for Full Pricing',
+      durationOrTimeline: 'Daily, Weekly & Monthly Flexible Bookings',
+      image: sceneResort,
+      features: [
+        'All kinds of BnB available at your request: studios, 1-3 bedroom furnished apartments, private villas & cottages',
+        'Prime locations across Nairobi (Westlands, Kilimani, Karen, Upper Hill) & Kenya Coast (Diani, Nyali, Watamu)',
+        'High-speed Wi-Fi, fully equipped modern kitchen, smart TV, hot water & 24/7 guarded security',
+        'Professional housekeeping, fresh linen, swimming pool access, and optional private chef service',
+      ],
+      subOptions: [
+        { title: 'Executive City BnBs & Apartments', desc: 'Modern furnished suites in Nairobi with work desks, fast Wi-Fi, and gym/pool facilities for business and leisure.' },
+        { title: 'Coastal Beachfront Villas & BnBs', desc: 'Private self-catering beach homes, cottages, and villas with direct ocean access in Diani, Nyali & Watamu.' },
+        { title: 'Upcountry Retreats & Safari Cottages', desc: 'Peaceful scenic getaways in Naivasha, Nanyuki, Mount Kenya, and Rift Valley for families and weekend retreats.' },
+        { title: 'Bespoke BnB on Demand', desc: 'Simply tell us your preferred location, group size, and dates—we locate and confirm vetted options immediately.' },
+      ],
+      inclusions: [
+        'Verified property inspection guaranteeing hygiene, safety, and amenities as described',
+        'Seamless host coordination and key handover for smooth check-in and check-out',
+        'Optional airport or SGR private transport bundle directly to your BnB doorstep',
+        'Dedicated 24/7 guest support for special requests and stay extensions',
       ],
     },
     {
@@ -183,19 +208,20 @@ export function ServicesPage({ onOpenBooking }: ServicesPageProps) {
       badge: 'Reliable Fleet',
       title: 'Airport Transfers & Chauffeur Ground Transportation',
       subtitle: 'Punctual JKIA, Wilson & SGR Pickups in Clean, Insured Vehicles',
-      description: 'Enjoy peace of mind upon landing in Kenya with our punctual airport transfer desk. Our professional drivers track your flight status in real time and greet you inside the arrival terminal. Our modern fleet includes executive sedans, spacious Toyota Alphard/Voxy minivans, 4x4 Safari Land Cruisers, and 33-seater executive buses.',
-      pricingOrTerms: 'Transparent Fixed Pricing · Zero Surge Fees',
-      durationOrTimeline: '24/7 On-Demand & Advance Scheduled Pickups',
+      description: 'Travel stress-free with guaranteed door-to-door ground transfers. Whether arriving late at night at Jomo Kenyatta International Airport (JKIA), departing from Wilson Airport (WIL) for a bush flight, or catching the SGR Madaraka Express train at Nairobi Terminus, our professional chauffeurs track your flight in real time and meet you inside arrivals with a personalized name-board.',
+      pricingOrTerms: 'Call or Submit a Quotation Request for Transfer Rates',
+      durationOrTimeline: '24/7 Dedicated Chauffeur Fleet',
+      image: heroSafari,
       features: [
-        'Personal meet-and-greet with name signboard at arrival gate',
-        'Flight delay tracking with complimentary wait time',
-        'Clean, air-conditioned vehicles with commercial PSV passenger insurance',
-        'Transfers between JKIA, Wilson Airport, Nairobi CBD, and Mombasa SGR stations',
+        'Flight status tracking to adjust for delays or early aircraft arrivals automatically',
+        'Clean, air-conditioned saloon cars, 7-seater Noah/Voxy vans & executive SUVs',
+        'Custom 4x4 Safari Land Cruisers with pop-up roof for upcountry safaris',
+        'Child safety seats available upon advance request at no extra charge',
       ],
       subOptions: [
-        { title: 'Executive Chauffeur Drive', desc: 'Dedicated full-day vehicle hire with experienced driver for city appointments.' },
-        { title: '4x4 Safari Cruiser Safari Hire', desc: 'Customized Land Cruisers with pop-up roofs, cooler boxes, and VHF radios.' },
-        { title: 'Inter-City Transfers', desc: 'Direct road travel between Nairobi, Naivasha, Nakuru, and Mount Kenya.' },
+        { title: 'JKIA International Airport Transfers', desc: 'Seamless door-to-door transfer between JKIA and any Nairobi hotel or residence.' },
+        { title: 'SGR Train Station Transfers', desc: 'Scheduled pickups and drop-offs at Syokimau Terminus and Mombasa Miritini Terminus.' },
+        { title: 'Full-Day Chauffeur Hire', desc: 'Dedicated car and driver at your disposal for city meetings, shopping, and dining.' },
       ],
       inclusions: [
         'All vehicle fuel, highway tolls, and airport parking fees included',
@@ -210,7 +236,7 @@ export function ServicesPage({ onOpenBooking }: ServicesPageProps) {
       title: 'Travel Insurance & Travel Cover Advisory',
       subtitle: 'Comprehensive Medical, Emergency Evacuation & Baggage Cover Guidance',
       description: 'Travel with absolute confidence. Our advisors assist you in reviewing and selecting appropriate travel insurance policies from accredited insurance underwriters. Protect your journey against medical emergencies, flying doctor bush evacuations, trip interruptions, flight cancellations, and lost luggage.',
-      pricingOrTerms: 'Policy Quoted Based on Age, Destination & Trip Duration',
+      pricingOrTerms: 'Call or Submit a Quotation Request for Insurance Quotes',
       durationOrTimeline: 'Single-Trip, Annual Multi-Trip & Family Cover',
       features: [
         'Emergency medical treatment and hospitalization coverage guidance',
@@ -233,10 +259,10 @@ export function ServicesPage({ onOpenBooking }: ServicesPageProps) {
       id: 'visa-assistance-advisory',
       dropCap: 'V',
       badge: 'Document Advisory',
-      title: 'Visa Assistance & Administrative Concierge',
+      title: 'Visa Assistance & Administrative Advisory Desk',
       subtitle: 'Checklist Verification, Application Guidance & Reservation Auditing',
       description: 'Navigate international visa requirements smoothly with our administrative travel advisory desk. We review application requirements for key international destinations including the UK, Schengen Area, USA, Dubai, South Africa, and Thailand, helping you prepare verified flight itineraries and hotel bookings to avoid costly delays.',
-      pricingOrTerms: 'Fixed Administrative Advisory Fee',
+      pricingOrTerms: 'Call or Submit a Quotation Request for Advisory Fees',
       durationOrTimeline: 'Pre-Submission Verification within 24 Hours',
       features: [
         'Comprehensive checklist audit based on current embassy requirements',
@@ -257,16 +283,16 @@ export function ServicesPage({ onOpenBooking }: ServicesPageProps) {
     },
   ];
 
-  // Guided Excursions & Activities (Seamlessly integrated into Services)
-  const excursionActivities: DropCapOption[] = [
+  // Guided Day Tours & Activities (Seamlessly integrated into Services)
+  const tourActivities: DropCapOption[] = [
     {
       id: 'big-five-game-drives',
       dropCap: 'G',
-      badge: 'Iconic Safari Excursion',
+      badge: 'Iconic Safari Tour',
       title: 'Big Five Wildlife Safari Game Drives',
       subtitle: 'Maasai Mara, Amboseli, Tsavo & Samburu in Custom 4x4 Land Cruisers',
       description: 'Embark on world-class game viewing drives across the most celebrated savannahs on Earth. Led by certified gold-level and silver-level bilingual naturalists, you will track lions, leopards, rhinos, cheetahs, and majestic elephant herds with uninterrupted 360-degree views from pop-up roof safari vehicles.',
-      pricingOrTerms: 'Included in Safari Packages · Custom Day Rate Quoted',
+      pricingOrTerms: 'Call or Submit a Quotation Request for Full Pricing',
       durationOrTimeline: 'Half-Day (4 hrs) / Full-Day (8 hrs) with Bush Picnic',
       image: heroSafari,
       features: [
@@ -289,11 +315,11 @@ export function ServicesPage({ onOpenBooking }: ServicesPageProps) {
     {
       id: 'hot-air-balloon-safari',
       dropCap: 'B',
-      badge: 'Unforgettable Excursion',
+      badge: 'Unforgettable Experience',
       title: 'Sunrise Hot Air Balloon Safaris & Champagne Bush Breakfast',
       subtitle: 'Gliding Silently Over the Maasai Mara Savannah at Dawn',
       description: 'The ultimate East African bucket-list adventure. Lift off gently as dawn breaks over the vast plains of the Maasai Mara, floating silently over meandering rivers, herds of wildebeest, and grazing giraffes. Touch down in the wild to a lavish open-air champagne breakfast cooked live on the savannah.',
-      pricingOrTerms: 'USD $450 - $480 per Adult · Special Child Rates Available',
+      pricingOrTerms: 'Call or Submit a Quotation Request for Full Pricing',
       durationOrTimeline: '4.5 Hours Total (approx 1 Hour Flight + Champagne Feast)',
       image: heroSafari,
       features: [
@@ -317,11 +343,11 @@ export function ServicesPage({ onOpenBooking }: ServicesPageProps) {
     {
       id: 'coral-reef-snorkeling-dhow',
       dropCap: 'S',
-      badge: 'Marine Excursion',
-      title: 'Coral Reef Snorkeling & Wasini Island Dhow Excursions',
+      badge: 'Marine Boat Tour',
+      title: 'Coral Reef Snorkeling & Wasini Island Dhow Tours',
       subtitle: 'Kisite-Mpunguti Marine Park, Wild Dolphins & Swahili Seafood Feasts',
       description: 'Sail the azure waters of the Kenyan coast aboard a traditional wooden Arabian dhow. Cruise into Kisite-Mpunguti Marine National Park, East Africas premier coral reef sanctuary, where you will snorkel alongside sea turtles, manta rays, and playful wild bottlenose dolphins, followed by a fresh Swahili crab and seafood feast on Wasini Island.',
-      pricingOrTerms: 'From KES 7,500 (Residents) / USD $95 (Non-Residents)',
+      pricingOrTerms: 'Call or Submit a Quotation Request for Full Pricing',
       durationOrTimeline: 'Full Day (07:30 AM to 05:00 PM)',
       image: destDiani,
       features: [
@@ -333,7 +359,7 @@ export function ServicesPage({ onOpenBooking }: ServicesPageProps) {
       ],
       subOptions: [
         { title: 'Kisite-Mpunguti Marine Snorkel', desc: 'Two distinct guided snorkeling stops at the outer coral reef garden.' },
-        { title: 'Scuba Diving Excursion', desc: 'Certified PADI 2-tank dives for qualified divers exploring reef walls.' },
+        { title: 'Scuba Diving Tour', desc: 'Certified PADI 2-tank dives for qualified divers exploring reef walls.' },
         { title: 'Shimoni Slave Caves Historical Walk', desc: 'Guided cultural tour through the ancient 18th-century limestone coral caves.' },
       ],
       inclusions: [
@@ -346,11 +372,11 @@ export function ServicesPage({ onOpenBooking }: ServicesPageProps) {
     {
       id: 'mount-kenya-aberdare-hiking',
       dropCap: 'T',
-      badge: 'Highland Nature Excursion',
+      badge: 'Highland Nature Trek',
       title: 'Mount Kenya & Aberdare Highland Forest Nature Treks',
       subtitle: 'Karuru Waterfalls, Chania Falls, Alpine Moorlands & Bamboo Forests',
       description: 'Escape the heat of the plains and explore Kenyas breathtaking alpine highlands. Hike through misty bamboo forests and high-altitude moorlands in Aberdare National Park, gazing down into dramatic plunging ravines at Karuru Falls (the tallest waterfall in Kenya) and breathing in crisp alpine mountain air.',
-      pricingOrTerms: 'Custom Guided Trek Rates · Daily Departures',
+      pricingOrTerms: 'Call or Submit a Quotation Request for Full Pricing',
       durationOrTimeline: 'Full-Day Nature Hike (6-8 Hours) or 3-Day Alpine Circuit',
       image: sceneMountain,
       features: [
@@ -373,11 +399,11 @@ export function ServicesPage({ onOpenBooking }: ServicesPageProps) {
     {
       id: 'nairobi-conservation-day-tours',
       dropCap: 'N',
-      badge: 'City Wildlife Excursion',
+      badge: 'City Wildlife Day Tour',
       title: 'Nairobi Conservation Day Tours: Giraffes, Elephants & Park Safari',
       subtitle: 'Hand-Feeding Endangered Giraffes, Sheldrick Orphanage & Nairobi National Park',
       description: 'Experience the unique wildlife capital of the world in a single action-packed day. Hand-feed endangered Rothschild giraffes at the Giraffe Centre, witness orphaned baby elephants drinking milk and playing in mud baths at the Daphne Sheldrick Wildlife Trust, and track lions and rhinos against the city skyline in Nairobi National Park.',
-      pricingOrTerms: 'From KES 6,500 (Residents) / USD $120 (Non-Residents)',
+      pricingOrTerms: 'Call or Submit a Quotation Request for Full Pricing',
       durationOrTimeline: 'Full Day (06:00 AM to 04:30 PM)',
       features: [
         'Early morning wildlife game drive in Nairobi National Park in 4x4 safari cruiser',
@@ -405,7 +431,7 @@ export function ServicesPage({ onOpenBooking }: ServicesPageProps) {
       title: 'Authentic Maasai Village & Swahili Cultural Encounters',
       subtitle: 'Living Traditions, Ancient Dances, Beadwork & Historic Coastal Towns',
       description: 'Engage respectfully with the vibrant communities that have shaped Kenyas heritage for centuries. Visit an authentic Maasai Manyatta village to witness traditional jump dances (Adumu), learn fire-making techniques, and understand community conservation, or stroll through centuries of maritime history in Mombasa Old Town, Fort Jesus, and Lamu Island.',
-      pricingOrTerms: 'KES 2,500 - 4,500 per person · Direct Community Contribution',
+      pricingOrTerms: 'Call or Submit a Quotation Request for Full Pricing',
       durationOrTimeline: '2 to 3 Hours Cultural Immersion',
       features: [
         'Warm welcoming song and traditional Adumu jumping dance by Maasai warriors',
@@ -427,12 +453,12 @@ export function ServicesPage({ onOpenBooking }: ServicesPageProps) {
     {
       id: 'glass-bottom-boat-marine',
       dropCap: 'M',
-      badge: 'Coastal Marine Excursion',
+      badge: 'Coastal Marine Tour',
       title: 'Glass-Bottom Boat Marine Exploration & Sand Island Cruises',
       subtitle: 'Diani Beach Lagoon, Coral Gardens, Sea Turtles & Sandbanks',
       description: 'A gentle, family-friendly ocean adventure perfect for all ages. Board custom-built glass-bottom boats right off the shores of Diani Beach or Watamu. Peer directly into vibrant underwater coral gardens teeming with zebra fish, starfish, and sea turtles without getting wet, or step off onto Robinson Crusoe sandbanks exposed only at low tide.',
-      pricingOrTerms: 'From KES 2,000 per person · Group & Family Packages Available',
-      durationOrTimeline: '2 to 3 Hours Relaxing Excursion',
+      pricingOrTerms: 'Call or Submit a Quotation Request for Full Pricing',
+      durationOrTimeline: '2 to 3 Hours Relaxing Boat Tour',
       image: destDiani,
       features: [
         'Crystal-clear viewing glass panel in the vessel floor for easy fish observation',
@@ -441,9 +467,9 @@ export function ServicesPage({ onOpenBooking }: ServicesPageProps) {
         'Low-tide stop at Robinson Island sandbar for refreshing coconut water and beach walks',
       ],
       subOptions: [
-        { title: 'Diani Lagoon Glass-Bottom Tour', desc: 'Quick 2-hour coral reef excursion from your beachfront hotel.' },
+        { title: 'Diani Lagoon Glass-Bottom Tour', desc: 'Quick 2-hour coral reef boat trip from your beachfront hotel.' },
         { title: 'Watamu Marine National Park Cruise', desc: 'Explore protected coral gardens and view green sea turtles feeding.' },
-        { title: 'Sand Island Sunset Cruise', desc: 'Late afternoon excursion with golden hour views over the Indian Ocean horizon.' },
+        { title: 'Sand Island Sunset Cruise', desc: 'Late afternoon sunset boat trip with golden hour views over the Indian Ocean horizon.' },
       ],
       inclusions: [
         'Boat transport, life jackets for adults and children, and boat captain',
@@ -454,11 +480,11 @@ export function ServicesPage({ onOpenBooking }: ServicesPageProps) {
     {
       id: 'desert-safari-dune-bashing',
       dropCap: 'D',
-      badge: 'Dubai Desert Excursion',
+      badge: 'Dubai Desert Safari Tour',
       title: 'Dubai Desert 4x4 Dune Bashing, Sandboarding & Bedouin Camp',
       subtitle: 'Red Dunes Adrenaline, Sunset Camel Rides & Arabian BBQ Under Stars',
       description: 'Experience the thrilling desert landscapes of Dubai and Abu Dhabi. Ride through towering red dunes in high-powered 4x4 Land Cruisers driven by master desert drivers, try your balance sandboarding down golden ridges, take a sunset camel trek, and enjoy an evening of Tanoura dancing, fire shows, and five-star Arabian BBQ dining.',
-      pricingOrTerms: 'From USD $65 per person · Private Hummer / Land Cruiser Available',
+      pricingOrTerms: 'Call or Submit a Quotation Request for Full Pricing',
       durationOrTimeline: 'Evening Safari (03:00 PM to 09:30 PM)',
       image: destDubai,
       features: [
@@ -486,14 +512,14 @@ export function ServicesPage({ onOpenBooking }: ServicesPageProps) {
   const displayedItems: DropCapOption[] = 
     activeFilter === 'services'
       ? travelServices
-      : activeFilter === 'excursions'
-      ? excursionActivities
-      : [...travelServices, ...excursionActivities];
+      : activeFilter === 'tours'
+      ? tourActivities
+      : [...travelServices, ...tourActivities];
 
-  const handleFilterChange = (filter: 'all' | 'services' | 'excursions') => {
+  const handleFilterChange = (filter: 'all' | 'services' | 'tours') => {
     setActiveFilter(filter);
-    if (filter === 'excursions') {
-      setSearchParams({ tab: 'excursions' });
+    if (filter === 'tours') {
+      setSearchParams({ tab: 'tours' });
     } else {
       setSearchParams({});
     }
@@ -523,7 +549,7 @@ export function ServicesPage({ onOpenBooking }: ServicesPageProps) {
         <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-slate-200 text-amber-700 text-xs font-bold uppercase tracking-wider mb-3 shadow-2xs">
             <Sparkles className="w-3.5 h-3.5 text-amber-600" />
-            <span>Travel Services & Excursions</span>
+            <span>Travel Services, BnBs & Day Tours</span>
           </div>
           
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight font-display">
@@ -531,7 +557,7 @@ export function ServicesPage({ onOpenBooking }: ServicesPageProps) {
           </h1>
           
           <p className="mt-3 text-slate-600 text-sm sm:text-base leading-relaxed">
-            Explore our travel management services and guided safari excursions below. Click any service to view details and request a tailored quote.
+            Explore our travel management solutions, verified BnB and holiday home stays, and guided safari day tours below. For all services, make a call or submit a quotation request to receive full and accurate pricing.
           </p>
 
           {/* Clean Sub-Category Switcher Tabs */}
@@ -544,7 +570,7 @@ export function ServicesPage({ onOpenBooking }: ServicesPageProps) {
                   : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
               }`}
             >
-              All Services & Excursions
+              All Services & Day Tours
             </button>
             <button
               onClick={() => handleFilterChange('services')}
@@ -555,18 +581,18 @@ export function ServicesPage({ onOpenBooking }: ServicesPageProps) {
               }`}
             >
               <Briefcase className="w-3.5 h-3.5" />
-              <span>Travel Management Services</span>
+              <span>Travel Management & BnB Stays</span>
             </button>
             <button
-              onClick={() => handleFilterChange('excursions')}
+              onClick={() => handleFilterChange('tours')}
               className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center gap-1.5 ${
-                activeFilter === 'excursions'
+                activeFilter === 'tours'
                   ? 'bg-amber-600 text-white shadow-xs'
                   : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
               }`}
             >
               <Compass className="w-3.5 h-3.5" />
-              <span>Safari & Day Excursions</span>
+              <span>Safari & Day Tours</span>
             </button>
           </div>
         </div>
@@ -576,41 +602,38 @@ export function ServicesPage({ onOpenBooking }: ServicesPageProps) {
           items={displayedItems}
           onOpenBooking={onOpenBooking}
           categoryLabel={
-            activeFilter === 'excursions'
-              ? 'Excursion'
+            activeFilter === 'tours'
+              ? 'Tour'
               : activeFilter === 'services'
               ? 'Service'
-              : 'Service & Excursion'
+              : undefined
           }
         />
 
-        {/* Minimal Bottom Help Desk Callout */}
-        <div className="mt-14 max-w-4xl mx-auto p-6 rounded-2xl bg-white border border-slate-200 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-600 flex items-center justify-center shrink-0">
-              <Headphones className="w-5 h-5" />
-            </div>
-            <div>
-              <div className="text-sm font-bold text-slate-900">Need a custom combination of services or excursions?</div>
-              <div className="text-xs text-slate-500 mt-0.5">Call our Nairobi concierge desk at <span className="font-semibold text-slate-800">{COMPANY_INFO.phone}</span></div>
-            </div>
+        {/* Bottom Direct Assistance Strip */}
+        <div className="mt-12 max-w-4xl mx-auto rounded-2xl bg-gradient-to-r from-slate-900 to-amber-950 p-6 sm:p-8 text-white shadow-md flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="space-y-1 text-center md:text-left">
+            <h3 className="text-lg font-bold text-white flex items-center justify-center md:justify-start gap-2">
+              <Phone className="w-5 h-5 text-amber-400" />
+              <span>Need Immediate Pricing or Custom BnB Stays?</span>
+            </h3>
+            <p className="text-xs sm:text-sm text-slate-300">
+              Speak directly with our Nairobi travel planners or submit a quotation request for full pricing and immediate room confirmations.
+            </p>
           </div>
 
-          <div className="flex items-center gap-2.5 shrink-0">
+          <div className="flex flex-wrap items-center gap-3">
             <button
-              onClick={() => onOpenBooking('Custom Travel & Excursion Consultation')}
-              className="px-4 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs transition-colors"
+              onClick={() => onOpenBooking('General Services & BnB Inquiry')}
+              className="px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 active:scale-95 text-slate-950 font-bold text-xs shadow transition-all cursor-pointer"
             >
-              Request Custom Quote
+              Submit Quotation Request
             </button>
             <a
-              href={`${COMPANY_INFO.whatsappUrl}?text=${encodeURIComponent('Hi Push World Travel Ltd, I would like to inquire about your services and excursions.')}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition-colors flex items-center gap-1.5"
+              href={`tel:${COMPANY_INFO.phone}`}
+              className="px-5 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 active:scale-95 text-white font-bold text-xs border border-white/20 transition-all cursor-pointer"
             >
-              <MessageSquare className="w-4 h-4" />
-              <span>WhatsApp</span>
+              Call {COMPANY_INFO.phone}
             </a>
           </div>
         </div>

@@ -93,7 +93,7 @@ const QUICK_DESTINATIONS: QuickDestinationChip[] = [
   { id: 'diani', label: 'Diani Beach', icon: '🏖️', dest: 'Diani Beach', cat: 'coastal' },
   { id: 'zanzibar', label: 'Zanzibar Island', icon: '🏝️', dest: 'Zanzibar', cat: 'international' },
   { id: 'amboseli', label: 'Amboseli Elephants', icon: '🐘', dest: 'Amboseli', cat: 'safari' },
-  { id: 'nairobi', label: 'Nairobi Excursions', icon: '🦒', dest: 'Nairobi', cat: 'safari' },
+  { id: 'nairobi', label: 'Nairobi Day Tours', icon: '🦒', dest: 'Nairobi', cat: 'safari' },
   { id: 'mombasa', label: 'Mombasa Coast', icon: '🏰', dest: 'Mombasa', cat: 'coastal' },
   { id: 'nakuru', label: 'Nakuru & Naivasha', icon: '🦩', dest: 'Nakuru', cat: 'safari' },
   { id: 'watamu', label: 'Watamu Marine', icon: '🐬', dest: 'Watamu', cat: 'coastal' },
